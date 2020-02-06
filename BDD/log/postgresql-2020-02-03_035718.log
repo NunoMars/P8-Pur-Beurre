@@ -1,0 +1,6 @@
+2020-02-03 03:57:20.170 CET [2172] LOG:  le système de bases de données a été arrêté à 2020-02-03 03:55:32 CET
+2020-02-03 03:57:21.219 CET [6496] LOG:  le système de bases de données est prêt pour accepter les connexions
+2020-02-04 11:20:52.249 CET [8200] ATTENTION:  worker took too long to start; canceled
+2020-02-04 11:21:46.742 CET [10836] ATTENTION:  autovacuum worker started without a worker entry
+2020-02-04 17:06:05.616 CET [8200] ATTENTION:  worker took too long to start; canceled
+2020-02-04 17:08:33.542 CET [17576] ATTENTION:  autovacuum worker started without a worker entry

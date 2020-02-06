@@ -1,0 +1,14 @@
+2020-01-24 21:44:43.943 CET [7684] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2020-01-22 02:50:13 CET
+2020-01-24 21:44:55.462 CET [7684] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2020-01-24 21:44:55.756 CET [7684] LOG:  la ré-exécution commence à 0/16515D8
+2020-01-24 21:44:55.757 CET [7684] LOG:  longueur invalide de l'enregistrement à 0/16516C0 : voulait 24, a eu 0
+2020-01-24 21:44:55.757 CET [7684] LOG:  ré-exécution faite à 0/1651688
+2020-01-24 21:44:57.288 CET [6504] LOG:  le système de bases de données est prêt pour accepter les connexions
+2020-01-24 21:57:34.010 CET [6504] LOG:  a reçu une demande d'arrêt rapide
+2020-01-24 21:57:34.028 CET [6420] ERREUR:  annulation de la requête à la demande de l'utilisateur
+2020-01-24 21:57:34.028 CET [7304] ERREUR:  annulation de la requête à la demande de l'utilisateur
+2020-01-24 21:57:34.314 CET [6504] LOG:  annulation des transactions actives
+2020-01-24 21:57:34.315 CET [6504] LOG:  processus en tâche de fond « logical replication launcher » (PID 7304) quitte avec le code de sortie 1
+2020-01-24 21:57:34.342 CET [6256] LOG:  arrêt en cours
+2020-01-24 21:57:34.812 CET [6504] LOG:  le système de base de données est arrêté

@@ -1,0 +1,11 @@
+2020-01-16 16:04:46.056 CET [9880] LOG:  le message de test n'a pas pu arriver sur la socket du récupérateur de
+	statistiques : No error
+2020-01-16 16:04:46.057 CET [9880] LOG:  nouvelle tentative avec une autre adresse pour le récupérateur de statistiques
+2020-01-16 16:04:46.557 CET [9880] LOG:  le message de test n'a pas pu arriver sur la socket du récupérateur de
+	statistiques : No error
+2020-01-16 16:04:46.558 CET [9880] LOG:  désactivation du récupérateur de statistiques à cause du manque de socket
+	fonctionnel
+2020-01-16 16:04:46.559 CET [9880] ATTENTION:  autovacuum non exécuté à cause d'une mauvaise configuration
+2020-01-16 16:04:46.559 CET [9880] ASTUCE :  Activez l'option « track_counts ».
+2020-01-16 16:04:46.683 CET [1988] LOG:  le système de bases de données a été arrêté à 2020-01-16 16:03:16 CET
+2020-01-16 16:04:46.779 CET [9880] LOG:  le système de bases de données est prêt pour accepter les connexions
