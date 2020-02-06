@@ -1,7 +1,0 @@
-2020-01-21 23:09:53.936 CET [8688] ERREUR:  annulation de la requête à la demande de l'utilisateur
-2020-01-21 23:09:53.949 CET [8716] ERREUR:  annulation de la requête à la demande de l'utilisateur
-2020-01-21 23:09:54.029 CET [7060] LOG:  a reçu une demande d'arrêt rapide
-2020-01-21 23:09:54.225 CET [7060] LOG:  annulation des transactions actives
-2020-01-21 23:09:54.240 CET [7060] LOG:  processus en tâche de fond « logical replication launcher » (PID 8716) quitte avec le code de sortie 1
-2020-01-21 23:09:54.423 CET [8648] LOG:  arrêt en cours
-2020-01-21 23:09:55.015 CET [7060] LOG:  le système de base de données est arrêté

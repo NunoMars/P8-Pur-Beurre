@@ -1,7 +1,0 @@
-2020-02-04 20:57:19.164 CET [8200] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2020-02-03 04:02:21 CET
-2020-02-04 20:57:40.233 CET [8200] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
-	automatique en cours
-2020-02-04 20:57:40.316 CET [8200] LOG:  la ré-exécution commence à 0/165AD98
-2020-02-04 20:57:40.316 CET [8200] LOG:  longueur invalide de l'enregistrement à 0/165AE80 : voulait 24, a eu 0
-2020-02-04 20:57:40.317 CET [8200] LOG:  ré-exécution faite à 0/165AE48
-2020-02-04 20:57:40.705 CET [7492] LOG:  le système de bases de données est prêt pour accepter les connexions

@@ -1,5 +1,0 @@
-2020-01-18 01:34:42.515 CET [9880] LOG:  a reçu une demande d'arrêt rapide
-2020-01-18 01:34:42.813 CET [9880] LOG:  annulation des transactions actives
-2020-01-18 01:34:43.469 CET [9880] LOG:  processus en tâche de fond « logical replication launcher » (PID 10636) quitte avec le code de sortie 1
-2020-01-18 01:34:43.632 CET [14980] LOG:  arrêt en cours
-2020-01-18 01:34:44.326 CET [9880] LOG:  le système de base de données est arrêté

@@ -1,9 +1,0 @@
-2020-01-20 01:19:08.289 CET [7536] LOG:  le système de bases de données a été arrêté à 2020-01-20 01:17:11 CET
-2020-01-20 01:19:09.125 CET [6872] LOG:  le système de bases de données est prêt pour accepter les connexions
-2020-01-20 01:30:55.580 CET [6872] LOG:  a reçu une demande d'arrêt rapide
-2020-01-20 01:30:55.761 CET [6872] LOG:  annulation des transactions actives
-2020-01-20 01:30:55.803 CET [8588] ERREUR:  annulation de la requête à la demande de l'utilisateur
-2020-01-20 01:30:55.804 CET [8564] ERREUR:  annulation de la requête à la demande de l'utilisateur
-2020-01-20 01:30:55.837 CET [6872] LOG:  processus en tâche de fond « logical replication launcher » (PID 8588) quitte avec le code de sortie 1
-2020-01-20 01:30:55.843 CET [8528] LOG:  arrêt en cours
-2020-01-20 01:30:58.611 CET [6872] LOG:  le système de base de données est arrêté
