@@ -41,6 +41,8 @@ class Product(models.Models):
     product_name_fr = models.TextField("Nom du produit", )
     url = models.TextField('Url du produit sur Openfoodfacts', )
     picture = models.TextField("Url de l'image", )
+    store = models.ManyToManyField(Store, related_name='produits', )
+    category = models.ManyToManyField(Category, related_name='catégories')
 
     class Meta:
         verbose_name = 'produit'
@@ -57,24 +59,5 @@ class History(models.Models):
         Product, related_name='produit proposé', backref='history')
 
     class Meta:
-        verbose_name = 'historique des produits'
+        verbose_name = 'historique de produits'
 
-
-class ProductCategory(models.Models):
-    """ Class to define the Product category table."""
-    _id = models.ForeignKeyField(Product, backref='product_category')
-    categories = models.ForeignKeyField(Category, backref='product_category')
-
-    class Meta:
-        primary_key = models.CompositeKey('_id', 'categories')
-        verbose_name = 'Catégorie de produit'
-
-
-class ProductStore(models.Models):
-    """ Class to define the Product Store table."""
-    _id = models.ForeignKeyField(Product, backref='product_store')
-    stores_tags = models.ForeignKeyField(Store, backref='product-store')
-
-    class Meta:
-        primary_key = models.CompositeKey('_id', 'stores_tags')
-        verbose_name = 'Magasins par produit'
