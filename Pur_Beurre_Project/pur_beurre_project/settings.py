@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'app.apps.AppConfig'
+    'products.apps.ProductsConfig'
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
-ROOT_URLCONF = 'Pur_Beurre.urls'
+ROOT_URLCONF = 'Pur_Beurre_Project.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Pur_Beurre.wsgi.application'
+WSGI_APPLICATION = 'Pur_Beurre_Project.wsgi.application'
 
 
 # Database

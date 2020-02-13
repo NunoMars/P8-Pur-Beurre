@@ -3,6 +3,7 @@ from django.db import models
 
 class User(models.Model):
     """ Class to define the User table."""
+    id = models.AutoField(primary_key=True)
     name = models.CharField("nom", max_length=200, unique=True)
     password = models.CharField("password", max_length=200)
     email = models.EmailField("email", max_length=100)
@@ -52,11 +53,11 @@ class Product(models.Model):
 
 class History(models.Model):
     """ Class to define the History table."""
-    id = models.ForeignKeyField(User, backref='history', on_delete=models.CASCADE)
-    chosen_product = models.ForeignKeyField(
-        Product, related_name='produit choisi', backref='history')
-    remplacement_product = models.ForeignKeyField(
-        Product, related_name='produit proposé', backref='history')
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    chosen_product = models.ForeignKey(
+        Product, related_name='produit_choisi', on_delete=models.CASCADE )
+    remplacement_product = models.ForeignKey(
+        Product, related_name='produit_proposé', on_delete=models.CASCADE )
 
     class Meta:
         verbose_name = 'historique de produits'
