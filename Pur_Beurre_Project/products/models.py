@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class User(models.Models):
+class User(models.Model):
     """ Class to define the User table."""
     name = models.CharField("nom", max_length=200, unique=True)
     password = models.CharField("password", max_length=200)
@@ -13,7 +13,7 @@ class User(models.Models):
         return self.name
 
 
-class Store(models.Models):
+class Store(models.Model):
     """ Class to define the Store table."""
     store = models.CharField("magasin", max_length=100, primary_key=True)
 
@@ -23,7 +23,7 @@ class Store(models.Models):
         return self.store
 
 
-class Category(models.Models):
+class Category(models.Model):
     """ Class to define the Category table."""
     category = models.CharField('catégorie', max_length=200 ,primary_key=True)
 
@@ -33,7 +33,7 @@ class Category(models.Models):
         return self.category
 
 
-class Product(models.Models):
+class Product(models.Model):
     """ Class to define the Product table."""
     _id = models.IntegerField("référence", primary_key=True)
     ingredients_text_fr = models.TextField("Ingrédients", )
@@ -50,7 +50,7 @@ class Product(models.Models):
         return self.product_name_fr
 
 
-class History(models.Models):
+class History(models.Model):
     """ Class to define the History table."""
     id = models.ForeignKeyField(User, backref='history', on_delete=models.CASCADE)
     chosen_product = models.ForeignKeyField(
@@ -61,3 +61,9 @@ class History(models.Models):
     class Meta:
         verbose_name = 'historique de produits'
 
+if __name__ == "__main__":
+    user = User()
+    store = Store()
+    cat = Category()
+    product = Product()
+    hist = History()
