@@ -1,4 +1,4 @@
-"""pur_beurre URL Configuration
+"""purbeureconfig URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -17,9 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
-app_name = "pur_beurre"
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name="pur_beurre/home.html"), name="home")
+    path("", TemplateView.as_view(template_name="home/home.html"), name="home")
 ]
