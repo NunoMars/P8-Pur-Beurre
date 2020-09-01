@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>{% block title %}{% endblock title %}</title>
         <!-- Favicon-->
-        <link rel="icon" type="icon" href="{ static 'dist/assets/img/logo_pur_beurre-favicon.png'}" />
+        <link rel="icon" href="{% static 'dist/assets/img/favicon.ico' %}"/>
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -24,12 +24,12 @@
         {% block nav %}
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href=""><img href= "{ static 'dist/assets/img/logo_pur_beurre.png'}"> Pur Beurre</a>
+                <a class="navbar-brand js-scroll-trigger" href=""><img src="{% static 'dist/assets/img/logo_pur_beurre-favicon (2).png' %}" height="25px" width="30px"> Pur Beurre</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="home">About</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="">Home</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Products"><button type="submit" class="btn btn-primary btn-xl js-scroll-trigger">Rechercher</button></a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                     </ul>
@@ -48,8 +48,11 @@
                         <hr class="divider my-4" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
-                        <h2 class="text-white-75 font-weight-light mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</h2>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+                        <h2 class="text-white-75 font-weight-light mb-5">Tropuvez un produit de substitution pour ceux que vous consomez tous les jours!</h2>
+                        <form action="" id="message-form">
+                            <input type="textarea" class="message-input" placeholder="Entrez votre recherche de poroduit ici...">
+                                <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger">Envoyer</button>
+                        </form>
                     </div>
                 </div>
             </div>
