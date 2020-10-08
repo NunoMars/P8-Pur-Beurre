@@ -24,8 +24,8 @@ def start():
     print(product_image_large)
     print(product_image_nutrition_large)
 
-    '''product=clear_data.clean_data(current_product, "snacks")
-    pp.pprint(product)'''
+    product=clear_data.clean_data(current_product, "snacks")
+    pp.pprint(product)
 
 if __name__ == "__main__":
     start()
