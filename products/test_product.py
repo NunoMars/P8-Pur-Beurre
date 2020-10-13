@@ -13,19 +13,19 @@ def start():
                     )
                     
     current_product = json.loads(r.content)
-    with open('data.json', 'w') as fp:
-        json.dump(current_product, fp)
-    select= current_product["products"][1]
-    product_image_large = select["selected_images"]["front"]["display"]["fr"]
-    product_image_small = select["selected_images"]["front"]["small"]["fr"]
-    product_image_nutrition_large = select["selected_images"]["nutrition"]["display"]["fr"]
-    product_image_nutrition_small = select["selected_images"]["nutrition"]["small"]["fr"]
-    pp.pprint(select)
-    print(product_image_large)
-    print(product_image_nutrition_large)
+    product0=clear_data.clean_data(current_product, "snacks")
+    product1=clear_data.products_to_inser(product0)
+    product2 =clear_data.select_id_and_stores_tags(product0)
 
-    product=clear_data.clean_data(current_product, "snacks")
-    pp.pprint(product)
+    """selected = product2
+    pp.pprint(selected)
+"""
+
+    
+   
+
+   
+
 
 if __name__ == "__main__":
     start()

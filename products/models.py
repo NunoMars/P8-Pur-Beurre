@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Store(models.Model):
     """ Class to define the Store table."""
-    store = models.CharField(primary_key=True, max_length=40)
+    stores = models.CharField(primary_key=True, max_length=100)
 
     class Meta:
         db_table = 'store'
@@ -19,15 +19,17 @@ class Category(models.Model):
 
 class Product(models.Model):
     """ Class to define the Product table."""
-    product = models.CharField(primary_key=True, max_length=50)
+    product = models.CharField(primary_key=True, max_length=20)
     repères_nutritionnelles_100g  = models.TextField()
     nutrition_grade_fr = models.CharField(max_length=1)
     product_name_fr = models.TextField()
-    product_image_large = models.URLField()
-    product_image_small = models.URLField()
-    product_image_nutrition_large = models.URLField()
-    product_image_nutrition_small = models.URLField()
-    url = models.URLField()
+    ingredients_text_fr = models.TextField()
+    product_image_large = models.TextField()
+    product_image_small = models.TextField()
+    product_image_nutrition_large = models.TextField()
+    product_image_nutrition_small = models.TextField()
+    url = models.TextField()
+    category = models.ForeignKey("Category", on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'product'
@@ -48,10 +50,10 @@ class History(models.Model):
 class ProductCategory(models.Model):
     """ Class to define the Product category table."""
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
-    categories = models.ForeignKey("Category", on_delete=models.CASCADE)
+    categorie = models.ForeignKey("Category", on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = (('product', 'categories'),)
+        unique_together = (('product', 'categorie'),)
         db_table = 'product_category'
 
 

@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
-from ...models import Store, Category, Product, History, ProductCategory, ProductStore
 
-from ...download_products import DataFiles
+from products.models import Store, Category, Product, History, ProductCategory, ProductStore
+from products.download_products import DataFiles
 import json
 
 
@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     help = "Insert all products an relations in the models tables."
 
-    print("Debout du travail!...",
+    print("Debout du travail!...")
 
 
     DataFiles.download_and_clean_all_products(DataFiles)
@@ -52,46 +52,42 @@ class Command(BaseCommand):
         )
 
     print("Insértion de tous les nouveaux produits!")
+    
+    for data_dict in products_to_insert:
+        data = Product(**data_dict)
+        data.save()
 
+    print("Insértion des Produits terminé!")
+    
     for data_dict in categories:
-        try:
-            data_dict = Category(categorie=data_dict)
-            data_dict.save()
-        except:
-            pass
+
+        data = Category(**data_dict)
+        data.save()
+
     print("Insértion de Categories terminé!")
 
     for data_dict in stores_tags:
-        try:
-            data_dict = Store(store=data_dict)
-            data_dict.save()
-        except:
-            pass
+
+        data = Store(**data_dict)
+        data.save()
+
     print("Insértion de Magasins terminé!")
 
-    for data_dict in products_to_insert:
-        try:
-            data_dict = Product(**data_dict)
-            data_dict.save()
-        except:
-            pass
-    print("Insértion des Produits terminé!")
+    
 
     for data_dict in _id_and_categories:
-        try:
-            data_dict = ProductCategory(**data_dict)
-            data_dict.save()
-        except:
-            pass
+        data = ProductCategory(**data_dict)
+        data.save()
+
     print("Insértion de Categories de Produits terminé!")
 
     for data_dict in _id_and_stores:
-        try:
-            data_dict = ProductStore(**data_dict)
-            data_dict.save()
-        except:
-            pass
+
+        data = ProductStore(**data_dict)
+        data.save()
+
     print("Insértion des magasins por chaque produit terminé!")
+
 
     print("Les produits sont, à present,",
         " sauvegardées dans la base de données!")
