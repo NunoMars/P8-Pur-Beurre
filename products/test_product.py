@@ -14,17 +14,10 @@ def start():
                     
     current_product = json.loads(r.content)
     product0=clear_data.clean_data(current_product, "snacks")
-    product1=clear_data.products_to_inser(product0)
-    product2 =clear_data.select_id_and_stores_tags(product0)
+    pp.pprint(product0)
 
-    """selected = product2
-    pp.pprint(selected)
-"""
-
-    
-   
-
-   
+    selected = product0
+    pp.pprint(selected)   
 
 
 if __name__ == "__main__":
