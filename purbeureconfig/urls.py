@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-
+from home import views
+"""alouer les views"""
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", TemplateView.as_view(template_name="home/home.html"), name="home"),
-    path("home", TemplateView.as_view(template_name="home/home.html"), name="home"),
-    path("products", TemplateView.as_view(template_name="products/products.html"), name="products"),    
+    path('home/', views.get_product, name='home'),
+    path("", views.get_product, name='home'),
+    path("products/", TemplateView.as_view(template_name="products/products.html"), name="products"),  
 
 ]

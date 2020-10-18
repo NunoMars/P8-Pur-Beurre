@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Products(models.Model):
     """ Class to define the Product table."""
-    product = models.CharField(primary_key=True, max_length=20)
+    product = models.CharField(primary_key=True, max_length=50)
     nutrition_grade_fr = models.CharField(max_length=1)
     product_name_fr = models.TextField()
     ingredients_text_fr = models.TextField()
@@ -13,9 +13,14 @@ class Products(models.Model):
     product_image_nutrition_small = models.TextField()
     url = models.TextField()
     stores = models.TextField()
-    category = models.CharField(max_length=20)
+    category = models.ManyToManyField("Categorys")
     class Meta:
         db_table = 'products'
+
+class Categorys(models.Model):
+    category = models.CharField(primary_key=True, max_length=50)
+    class Meta:
+        db_table = 'categorys'
 
 
 class History(models.Model):

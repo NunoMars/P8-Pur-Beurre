@@ -17,7 +17,7 @@ def start():
     pp.pprint(product0)
 
     selected = product0
-    pp.pprint(selected)   
+    pp.pprint(selected)
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from products.models import Products, History
+from products.models import Products, History, Categorys
 from products.download_products import DataFiles
-import json
+
 
 
 class Command(BaseCommand):
@@ -27,14 +27,28 @@ class Command(BaseCommand):
 
 
 
-        print("Insértion de tous les nouveaux produits!")
-        
-        for data_dict in products_to_insert:
-            try:
-                data = Products(**data_dict)
-                data.save()
-                
-            except:
-                raise CommandError("Ups, il y a eu une erreur dans l'insertion, commande aborté!!")
-            
+        print("Insértion de tous les produits dans la base de données!")
+
+        try:
+            for data_dict in products_to_insert:
+                c = Categorys(category=data_dict["category"])
+                c.save()
+                p = Products(
+                    product=str(data_dict["product"]),
+                    nutrition_grade_fr=data_dict["nutrition_grade_fr"],
+                    product_name_fr=data_dict["product_name_fr"],
+                    ingredients_text_fr=data_dict["ingredients_text_fr"],
+                    product_image_large=data_dict["product_image_large"],
+                    product_image_small=data_dict["product_image_small"],
+                    product_image_nutrition_large=data_dict["product_image_nutrition_large"],
+                    product_image_nutrition_small=data_dict["product_image_nutrition_small"],
+                    stores=data_dict["stores"],
+                    url=data_dict["url"],
+                    )
+                p.save()
+                p.category.add(c)
+        except:
+            raise CommandError("Ups une erreur est arrivé, insertion aborté!!")
+
+           
         self.stdout.write(self.style.SUCCESS("Les produits sont, à present, sauvegardées dans la base de données!"))
