@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from home import views
+from products import views as productViews
 """alouer les views"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.get_product, name='home'),
     path("", views.get_product, name='home'),
-    path("products/", TemplateView.as_view(template_name="products/products.html"), name="products"),  
-
+    path("products/", productViews.get_products_choice,name="products"),
 ]

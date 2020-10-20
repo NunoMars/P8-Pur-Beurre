@@ -34,5 +34,8 @@ class History(models.Model):
     class Meta:
         db_table = 'history'
 
+class ProductForm(models.Model):
+    cherched_product = models.CharField(primary_key=True, max_length=50)
+
 
 
