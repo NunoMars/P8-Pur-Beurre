@@ -15,6 +15,7 @@ def get_product(request):
                 cherched_product = form.cleaned_data['cherched_product']
                 try:
                     req = Products.objects.get(product_name_fr__contains=cherched_product)
+                    ProductForm.objects.all().delete()
                     p = ProductForm(
                     cherched_product=req.product
                     )

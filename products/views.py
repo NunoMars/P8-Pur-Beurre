@@ -1,5 +1,3 @@
-
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from home.forms import GetProductForm
@@ -7,12 +5,10 @@ from .models import Products, ProductForm
 
 def get_products_choice(request):
 
-    p = ProductForm.objects.filter().latest('cherched_product')
-    product = p.cherched_product
-    print(product)
-    req = Products.objects.get(product=product)
-    product_img = req.product_image_large
-    product_name = req.product_name_fr
+    req = ProductForm.objects.filter().latest('cherched_product')
+    product_to_query = req.cherched_product
+    req_proposed_product = Products.objects.get(product=product_to_query)
+
     """# if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -29,6 +25,9 @@ def get_products_choice(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = GetProductForm()"""
-
-    return render(request, 'products/products.html')
+    vars_to_template = {
+        'product_img' : req_proposed_product.product_image_large,
+        'product_name' : req_proposed_product.product_name_fr
+    }
+    return render(request, 'products/products.html', vars_to_template)
 
