@@ -33,6 +33,7 @@ class Command(BaseCommand):
             for data_dict in products_to_insert:
                 c = Categorys(category=data_dict["category"])
                 c.save()
+
                 p = Products(
                     product=str(data_dict["product"]),
                     nutrition_grade_fr=data_dict["nutrition_grade_fr"],
@@ -45,8 +46,11 @@ class Command(BaseCommand):
                     stores=data_dict["stores"],
                     url=data_dict["url"],
                     )
+                
+                cat= Categorys.objects.get(category=data_dict["category"])
+                p.category = cat
                 p.save()
-                p.category.add(c)
+
         except:
             raise CommandError("Ups une erreur est arrivé, insertion aborté!!")
 

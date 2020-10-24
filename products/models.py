@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+class Categorys(models.Model):
+    category = models.CharField(primary_key=True, max_length=50)
+    class Meta:
+        db_table = 'categorys'
+
 class Products(models.Model):
     """ Class to define the Product table."""
     product = models.CharField(primary_key=True, max_length=50)
@@ -13,15 +19,9 @@ class Products(models.Model):
     product_image_nutrition_small = models.TextField()
     url = models.TextField()
     stores = models.TextField()
-    category = models.ManyToManyField("Categorys")
+    category = models.ForeignKey("Categorys", on_delete=models.CASCADE, default="category")
     class Meta:
         db_table = 'products'
-
-class Categorys(models.Model):
-    category = models.CharField(primary_key=True, max_length=50)
-    class Meta:
-        db_table = 'categorys'
-
 
 class History(models.Model):
     """ Class to define the History table."""
