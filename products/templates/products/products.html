@@ -30,39 +30,32 @@
                 {% csrf_token %}
                 {{ form }} 
                 <div class="row">
-                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <img src={{product_img_choice_1}}>
-                        <h2>{{product_name_choice_1}}</h2>                                                               
-                        <input type="submit" id="image_buton" name="choice_boutton" value = "P1 choisi">
-                        
+                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">                                                           
+                        <button type="submit" id="image_buton" name="submit" value = "P1 choisi"><img src="{{product_img_choice_1}}"></button>
+                        <h3>{{product_name_choice_1}}</h3>                         
                     </div>
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <img src={{product_img_choice_2}}>
-                        <h2>{{product_name_choice_2}}</h2>                       
-                        <input type="submit" id="image_buton" name="choice_boutton" value = "P2 choisi">
+                        <button type="submit" id="image_buton" name="submit" value = "P2 choisi"><img src="{{product_img_choice_2}}"></button>
+                        <h3>{{product_name_choice_2}}</h3> 
                     </div>
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <img src={{product_img_choice_3}}>
-                        <h2>{{product_name_choice_3}}</h2>                    
-                        <input type="submit" id="image_buton" name="choice_boutton" value = "P3 choisi">
+                        <button type="submit" id="image_buton" name="submit" value = "P3 choisi"><img src="{{product_img_choice_3}}"></button>
+                        <h3>{{product_name_choice_3}}</h3> 
                     </div>
                 </div>
                 <hr class="divider my-4" />
                 <div class="row">
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <img src={{product_img_choice_4}}>
-                        <h2>{{product_name_choice_4}}</h2>                     
-                        <input type="submit" id="image_buton"  name="choice_boutton" value = "P4 choisi">
+                        <button type="submit" id="image_buton" name="submit" value = "P4 choisi"><img src="{{product_img_choice_4}}"></button>
+                        <h3>{{product_name_choice_4}}</h3> 
                     </div>
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <img src={{product_img_choice_5}}>
-                        <h2>{{product_name_choice_5}}</h2>                        
-                        <input type="submit" id="image_buton" name="choice_boutton" value = "P5 choisi">
+                        <button type="submit" id="image_buton" name="submit" value = "P5 choisi"><img src="{{product_img_choice_5}}"></button>
+                        <h3>{{product_name_choice_5}}</h3> 
                     </div>
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <img src={{product_img_choice_6}}>
-                        <h2>{{product_name_choice_6}}</h2>                     
-                        <input type="submit" id="image_buton" name="choice_boutton" value = "P6 choisi">                    
+                        <button type="submit" id="image_buton" name="submit" value = "P6 choisi"><img src="{{product_img_choice_6}}"></button>
+                        <h3>{{product_name_choice_6}}</h3>                   
                     </div>
                 </div>
             </form>               

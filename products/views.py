@@ -21,15 +21,21 @@ def get_products_choice(request):
     prod5 = random_items[4]
     prod6 = random_items[5]
 
-    if "choice_boutton" in request.POST:
-        if "P1 choisi" == request.POST.get("choice_boutton"):
+    if "submit" in request.POST:
+        if "P1 choisi" == request.POST.get("submit"):# do something with interview_HTML button is clicked
             print("vous avez chois le produit 1") 
-        # do something with interview_HTML button is clicked
-        elif "P2 choisi" == request.POST.get("choice_boutton"):
+        
+        elif "P2 choisi" == request.POST.get("submit"):
             print("vous avez chois le produit 2")
-        elif "P3 choisi" == request.POST.get("choice_boutton"):
+        elif "P3 choisi" == request.POST.get("submit"):
             print("vous avez chois le produit 3")
-            # do something with interview_CSS button is clicked
+        elif "P4 choisi" == request.POST.get("submit"):
+            print("vous avez chois le produit 4")
+        elif "P5 choisi" == request.POST.get("submit"):
+            print("vous avez chois le produit 5")
+        elif "P6 choisi" == request.POST.get("submit"):
+            print("vous avez chois le produit 6")
+            
 
     vars_to_template = {
         'product_img' : req_proposed_product.product_image_large,
