@@ -37,5 +37,8 @@ class History(models.Model):
 class ProductForm(models.Model):
     cherched_product = models.CharField(primary_key=True, max_length=50)
 
+class ProductChosed(models.Model):
+    proposed_product = models.CharField(primary_key=True, max_length=50)
+
 
 

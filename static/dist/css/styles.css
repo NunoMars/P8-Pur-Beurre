@@ -10216,6 +10216,16 @@ hr.light {
     }
 }
 
+header.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 6.5rem);
+    background: linear-gradient(to bottom, rgba(232, 167, 93, 0.8) 0%, rgba(232, 167, 93, 0.8) 100%), url("/static/dist/assets/img/bg-masthead.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
 header.masthead h1 {
     font-size: 2.25rem;
 }

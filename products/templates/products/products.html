@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% load static%}
 {% block title %}Page Products{% endblock title %}
-        
+
+       
 <!-- Masthead-->
 {% block header %}
     <header class="masthead">                           
-        <div class="container-fluid bg-dark w-100 h-100" style="background:url('{{product_img}}');background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-size: cover;">
+        <div class="container-fluid bg-dark w-100 h-100" style="background: url('{{product_img}}');background-size: 50%;background-repeat: no-repeat;background-color:black;background-attachment: scroll;background-position: center;">
             <div class="row h-100 w-100 justify-content-center align-items-center text-cente">
                 <div class="col justify-content-center align-items-center text-center">
                     <h1 class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">{{product_name}}</h1>
@@ -30,32 +28,62 @@
                 {% csrf_token %}
                 {{ form }} 
                 <div class="row">
-                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">                                                           
-                        <button type="submit" id="image_buton" name="submit" value = "P1 choisi"><img src="{{product_img_choice_1}}"></button>
-                        <h3>{{product_name_choice_1}}</h3>                         
+                    <div class="col p-1 justify-content-center align-items-center text-center" style="position:relative;">
+                        <div style="position:absolute;padding-left:75%;margin-top: -1rem !important;">
+                            <div class="badge rounded-circle badge-primary text-wrap text-uppercase text-white font-weight-bold">
+                                <h1>{{product_nut_choice_1}}</h1>
+                            </div>
+                        </div>                                                            
+                        <button class="btn btn-default btn-block" type="submit" id="image_buton" name="submit" value = "P1 choisi"><img class="w-75 p-3" src="{{product_img_choice_1}}"></button>
+                        <h3>{{product_name_choice_1}}</h3>                    
                     </div>
-                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <button type="submit" id="image_buton" name="submit" value = "P2 choisi"><img src="{{product_img_choice_2}}"></button>
-                        <h3>{{product_name_choice_2}}</h3> 
+                    <div class="col p-1 justify-content-center align-items-center text-center" style="position:relative;">
+                        <div style="position:absolute;padding-left:75%;margin-top: -1rem !important;">
+                            <div class="badge rounded-circle badge-primary text-wrap text-uppercase text-white font-weight-bold">
+                                <h1>{{product_nut_choice_2}}</h1>
+                            </div>
+                        </div>                                                            
+                        <button  class="btn btn-default btn-block" type="submit" id="image_buton" name="submit" value = "P2 choisi"><img class="w-75 p-3" src="{{product_img_choice_2}}"></button>
+                        <h3>{{product_name_choice_2}}</h3>                    
                     </div>
-                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <button type="submit" id="image_buton" name="submit" value = "P3 choisi"><img src="{{product_img_choice_3}}"></button>
-                        <h3>{{product_name_choice_3}}</h3> 
+                    <div class="col p-1 justify-content-center align-items-center text-center" style="position:relative;">
+                        <div style="position:absolute;padding-left:75%;margin-top: -1rem !important;">
+                            <div class="badge rounded-circle badge-primary text-wrap text-uppercase text-white font-weight-bold">
+                                <h1>{{product_nut_choice_3}}</h1>
+                            </div>
+                        </div>                                                            
+                        <button class="btn btn-default btn-block" type="submit" id="image_buton" name="submit" value = "P3 choisi"><img class="w-75 p-3" src="{{product_img_choice_3}}"></button>
+                        <h3>{{product_name_choice_3}}</h3>                    
                     </div>
                 </div>
                 <hr class="divider my-4" />
-                <div class="row">
-                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <button type="submit" id="image_buton" name="submit" value = "P4 choisi"><img src="{{product_img_choice_4}}"></button>
-                        <h3>{{product_name_choice_4}}</h3> 
+                <div class="row px-xl-0">
+                    <div class="col justify-content-center align-items-center text-center" style="position:relative;">
+                        <div style="position:absolute;padding-left:75%;margin-top: -1rem !important;">
+                            <div class="badge rounded-circle badge-primary text-wrap text-uppercase text-white font-weight-bold">
+                                <h1>{{product_nut_choice_4}}</h1>
+                            </div>
+                        </div>                                                            
+                        <button class="btn btn-default btn-block " type="submit" id="image_buton" name="submit" value = "P4 choisi"><img class="w-75 p-3" src="{{product_img_choice_4}}"></button>
+                        <h3>{{product_name_choice_4}}</h3>                    
                     </div>
-                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <button type="submit" id="image_buton" name="submit" value = "P5 choisi"><img src="{{product_img_choice_5}}"></button>
-                        <h3>{{product_name_choice_5}}</h3> 
+                    <div class="col justify-content-center align-items-center text-center" style="position:relative;">
+                        <div style="position:absolute;padding-left:75%;margin-top: -1rem !important;">
+                            <div class="badge rounded-circle badge-primary text-wrap text-uppercase text-white font-weight-bold">
+                                <h1>{{product_nut_choice_5}}</h1>
+                            </div>
+                        </div>                                                            
+                        <button class="btn btn-default btn-block" type="submit" id="image_buton" name="submit" value = "P5 choisi"><img class="w-75 p-3" src="{{product_img_choice_5}}"></button>
+                        <h3>{{product_name_choice_5}}</h3>                    
                     </div>
-                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <button type="submit" id="image_buton" name="submit" value = "P6 choisi"><img src="{{product_img_choice_6}}"></button>
-                        <h3>{{product_name_choice_6}}</h3>                   
+                    <div class="col justify-content-center align-items-center text-center" style="position:relative;">
+                        <div style="position:absolute;padding-left:75%;margin-top: -1rem !important;">
+                            <div class="badge rounded-circle badge-primary text-wrap text-uppercase text-white font-weight-bold">
+                                <h1>{{product_nut_choice_6}}</h1>
+                            </div>
+                        </div>                                                            
+                        <button class="btn btn-default btn-block" type="submit" id="image_buton" name="submit" value = "P6 choisi"><img class="w-75 p-3" src="{{product_img_choice_6}}"></button>
+                        <h3>{{product_name_choice_6}}</h3>                    
                     </div>
                 </div>
             </form>               

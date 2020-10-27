@@ -14,12 +14,10 @@ def get_product(request):
                 # process the data in form.cleaned_data as required
                 cherched_product = form.cleaned_data['cherched_product']
                 try:
-                    req = Products.objects.get(product_name_fr__contains=cherched_product)
-                    ProductForm.objects.all().delete()
-                    p = ProductForm(
-                    cherched_product=req.product
-                    )
-                    p.save()
+                    req = Products.objects.filter(
+                        product_name_fr__contains=cherched_product
+                        )[:1]
+                    prod = req[0]                    
 
                 except:
                     error = "Erreur!! Impossible de trouver le produit recherché! essayez encore."
@@ -29,6 +27,12 @@ def get_product(request):
                     }
                     
                     return render(request, 'home/home.html', vars_to_template)
+                
+                ProductForm.objects.all().delete()
+                p = ProductForm(
+                cherched_product=prod.product
+                )
+                p.save()
                 # redirect to a new URL:
                 return HttpResponseRedirect('/products/')
 

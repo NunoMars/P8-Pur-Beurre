@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}Page Product{% endblock title %}
+
+
+<!-- Masthead-->
+{% block header %}
+    <header class="masthead">                           
+        <div class="container-fluid bg-dark w-100 h-100" style="background: url('{{product_img}}');background-size: 50%;background-repeat: no-repeat;background-color:black;background-attachment: scroll;background-position: center;">
+            <div class="row h-100 w-100 justify-content-center align-items-center text-cente">
+                <div class="col justify-content-center align-items-center text-center">
+                    <h1 class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">{{product_name}}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <!-- Proposed products-->
+    <section class="page-section" id="services">        
+        <div class="container">
+            <hr class="divider my-4" />
+            <div class="row">
+                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                <h3>Nutriscore</h3>                                                           
+                {% if nutriscore == "a" %}
+                <img src="{% static 'dist/assets/img/nutri-score-A.png' %}" width="100%">
+                {% elif nutriscore == "b" %}
+                <img src="{% static 'dist/assets/img/nutri-score-B.png' %}" width="100%">
+                {% elif nutriscore == "c" %}
+                <img src="{% static 'dist/assets/img/nutri-score-C.png' %}" width="100%">
+                {% elif nutriscore == "d" %}
+                <img src="{% static 'dist/assets/img/nutri-score-D.png' %}" width="100%">
+                {% elif nutriscore == "e" %}
+                <img src="{% static 'dist/assets/img/nutri-score-E.png' %}" width="100%">
+                {% else %}
+                <img src="{% static 'dist/assets/img/scores.png' %}">
+                {% endif %}                        
+                </div>
+                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                    <h3>Repéres Nutritionels pour 100g </h3>                
+                    <img src="{{nutrition_img}}">
+                </div>
+            </div>
+            <hr class="divider my-4" />
+            <div class="row h-100 w-100 justify-content-center align-items-center text-cente">
+                <div class="col justify-content-center align-items-center text-center">
+                    <a href="{{url}}"><h1 class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">LIEN VERS LA PAGE OPENFOODFACTS DE: {{product_name}}</h1></a>
+                </div>
+            </div>             
+        </div>
+    </section>
+{% endblock content %}
