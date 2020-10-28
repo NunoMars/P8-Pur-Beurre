@@ -1,9 +1,9 @@
 import random
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .forms import GetProductChoiceForm
 from .models import Products, ProductForm, ProductChosed
-
 
 
 def get_products_choice(request):
@@ -88,6 +88,8 @@ def get_products_choice(request):
 
     return render(request, 'products/products.html', vars_to_template)
 
+
+@login_required(login_url='/login/')
 def product_view(request):
     req = ProductChosed.objects.filter().latest('proposed_product')
     product_to_query = req.proposed_product

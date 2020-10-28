@@ -18,6 +18,9 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from home import views
 from products import views as productViews
+from accounts import views as accountViews
+from django.contrib.auth import views as auth_views
+
 """alouer les views"""
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +29,6 @@ urlpatterns = [
     path("products/", productViews.get_products_choice,name="products"),
     path("product/", productViews.product_view,name="product"),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('login/', accountViews.login_view,name="login"),
+    path("logout/", accountViews.logout_view,name="logout"),
 ]
