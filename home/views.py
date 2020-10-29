@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from products.models import Products, ProductForm
+from products.models import Products
 from .forms import GetProductForm
 
 def get_product(request):
@@ -17,7 +17,8 @@ def get_product(request):
                     req = Products.objects.filter(
                         product_name_fr__contains=cherched_product
                         )[:1]
-                    prod = req[0]                    
+                    product = req[0]
+                    request.session['product'] = product.product                    
 
                 except:
                     error = "Erreur!! Impossible de trouver le produit recherché! essayez encore."
@@ -28,11 +29,6 @@ def get_product(request):
                     
                     return render(request, 'home/home.html', vars_to_template)
                 
-                ProductForm.objects.all().delete()
-                p = ProductForm(
-                cherched_product=prod.product
-                )
-                p.save()
                 # redirect to a new URL:
                 return HttpResponseRedirect('/products/')
 

@@ -52,7 +52,7 @@ class Command(BaseCommand):
                 p.save()
 
         except:
-            raise CommandError("Ups une erreur est arrivé, insertion aborté!!")
+            raise CommandError("Ups une erreur est arrivé, insertion aborté!! sur le produit", p.product_name_fr)
 
            
         self.stdout.write(self.style.SUCCESS("Les produits sont, à present, sauvegardées dans la base de données!"))

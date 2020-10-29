@@ -8,8 +8,8 @@ class Categorys(models.Model):
         db_table = 'categorys'
 
 class Products(models.Model):
-    """ Class to define the Product table."""
-    product = models.CharField(primary_key=True, max_length=50)
+    """ Class to define the Product table. I used TextField because the lenght is superior than 200"""
+    product = models.CharField(max_length=20, primary_key=True)
     nutrition_grade_fr = models.CharField(max_length=1)
     product_name_fr = models.TextField()
     ingredients_text_fr = models.TextField()
@@ -34,11 +34,7 @@ class History(models.Model):
     class Meta:
         db_table = 'history'
 
-class ProductForm(models.Model):
-    cherched_product = models.CharField(primary_key=True, max_length=50)
 
-class ProductChosed(models.Model):
-    proposed_product = models.CharField(primary_key=True, max_length=50)
 
 
 
