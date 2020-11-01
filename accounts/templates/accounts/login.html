@@ -3,38 +3,35 @@
 {% block title %}Login Page{% endblock title %}
 
 {% block content %}
+    <header class="masthead">                           
+        <div class="container-fluid w-100 h-100" >
+            <div class="row h-100 w-100 justify-content-center align-items-center text-cente">
+                <div class="col justify-content-center align-items-center text-center">
+                    {% if form.errors %}
+                    <p>Your username and password didn't match. Please try again.</p>
+                    {% endif %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+                    {% if next %}
+                        {% if user.is_authenticated %}
+                        <p>Your account doesn't have access to this page. To proceed,
+                        please login with an account that has access.</p>
+                        {% else %}
+                        <p>Please login to see this page.</p>
+                        {% endif %}
+                    {% endif %}
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <p><label for='username' class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">Utilisateur</label>
+                        <input type='text' name='username' value='' id='username'></p>
+                        <p><label for='password' class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">Mot de Pass</label>
+                        <input type='text' name='password' value='' id='password'></p>
+                        <p><input type="submit" value="login" class="btn btn-primary btn-xl js-scroll-trigger"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="login">
-<input type="hidden" name="next" value="{{ next }}">
-</form>
-
-{# Assumes you setup the password_reset view in your URLconf #}
-{#<p><a href="{% url 'password_reset' %}">Mot de pass oublié?</a></p>#}
 
 {% endblock %}
