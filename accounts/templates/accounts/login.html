@@ -7,23 +7,11 @@
         <div class="container-fluid w-100 h-100" >
             <div class="row h-100 w-100 justify-content-center align-items-center text-cente">
                 <div class="col justify-content-center align-items-center text-center">
-                    {% if form.errors %}
-                    <p>Your username and password didn't match. Please try again.</p>
-                    {% endif %}
 
-                    {% if next %}
-                        {% if user.is_authenticated %}
-                        <p>Your account doesn't have access to this page. To proceed,
-                        please login with an account that has access.</p>
-                        {% else %}
-                        <p>Please login to see this page.</p>
-                        {% endif %}
-                    {% endif %}
-
-                    <form method="post" action="{% url 'login' %}">
+                    <form method="post" action="">
                         {% csrf_token %}
-                        <p><label for='username' class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">Utilisateur</label>
-                        <input type='text' name='username' value='' id='username'></p>
+                        <p><label for='email' class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">Utilisateur</label>
+                        <input type='text' name='email' value='' id='email'></p>
                         <p><label for='password' class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">Mot de Pass</label>
                         <input type='text' name='password' value='' id='password'></p>
                         <p><input type="submit" value="login" class="btn btn-primary btn-xl js-scroll-trigger"></p>

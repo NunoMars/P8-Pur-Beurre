@@ -1,9 +1,11 @@
 import random
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from .forms import GetProductChoiceForm
-from .models import Products
+from .models import Products, History
+
+from accounts.models import CustomUser
+from django.contrib.auth.models import User
 
 
 def get_products_choice(request):
@@ -22,6 +24,13 @@ def get_products_choice(request):
 
     if "submit" in request.POST:
         product = request.POST.get("submit")# do something with interview_HTML button is clicked
+        save_product = request.POST.get("submit")
+        if request.user.is_authenticated:
+            save = History(User, chosen_product=product, remplacement_product=save_product)
+            save.save()
+        else:
+            return redirect('login')
+
         request.session['product_to_show'] = product  
 
         return HttpResponseRedirect('/products/product/')  

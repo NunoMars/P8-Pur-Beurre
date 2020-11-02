@@ -1,7 +1,6 @@
-import time
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -11,8 +10,6 @@ class CustomUserManager(BaseUserManager):
         Creates and saves a User with teh given email and password.
 
         """
-        t = time.localtime()
-        now = time.strftime("%H:%M:%S", t)
 
         if not email:
             raise ValueError('Vous devez renseigner un email!')
@@ -23,8 +20,8 @@ class CustomUserManager(BaseUserManager):
             is_staf=is_staf,
             is_active=True,
             is_superuser=is_superuser,
-            last_login=now,
-            date_joined=now,
+            last_login=models.DateField(auto_now=True),
+            date_joined=models.DateField(auto_now=True),
             **extra_fields
         )
         user.set_password(password)
@@ -59,3 +56,4 @@ class CustomUser(AbstractBaseUser):
     def get_full_name(self):
         full_name = "%s %s" % (self.first_name, self.second_name)
         return full_name.strip()
+

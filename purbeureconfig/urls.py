@@ -28,7 +28,4 @@ urlpatterns = [
     path("", views.get_product, name='home'),
     path('products/', include('products.urls')),
     path('accounts/', include('accounts.urls')),
-    
-    path('login/', accountViews.login_view,name="login"),
-    path("logout/", accountViews.logout_view,name="logout"),
 ]
