@@ -13,18 +13,22 @@ def get_product(request):
             if form.is_valid():
                 # process the data in form.cleaned_data as required
                 cherched_product = form.cleaned_data['cherched_product']
+
                 try:
                     req = Products.objects.filter(
                         product_name_fr__contains=cherched_product
                         )[:1]
                     product = req[0]
-                    request.session['product'] = product.product                    
-
+                    
+                    request.session['product'] = product.product
+                    prod = request.session.get('product')
+                                 
+                    
                 except:
-                    error = "Erreur!! Impossible de trouver le produit recherché! essayez encore."
+                    not_found = "Impossible de trouver le produit recherché! Essayez encore."
                     vars_to_template={
                        'form': form,
-                       'atention': error 
+                       'atention': not_found 
                     }
                     
                     return render(request, 'home/home.html', vars_to_template)

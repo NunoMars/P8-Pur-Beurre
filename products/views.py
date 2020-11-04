@@ -29,7 +29,7 @@ def get_products_choice(request):
             save = History(User, chosen_product=product, remplacement_product=save_product)
             save.save()
         else:
-            return redirect('login')
+            return redirect('../accounts/auth/')
 
         request.session['product_to_show'] = product  
 

@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL="accounts.CustomUser"
 AUTHENTIFICATION_BACKENDS = ('accounts.backends.CustomUserAuth',)
-LOGIN_URL = "accounts/auth/"
 
 ###################################################
 
