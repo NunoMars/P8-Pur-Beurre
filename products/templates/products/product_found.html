@@ -1,0 +1,12 @@
+<!-- Masthead-->
+{% block header %}
+    <header class="masthead">                           
+        <div class="container-fluid bg-dark w-100 h-100" style="background: url('{{proposed_product.product_image_large}}');background-size: 50%;background-repeat: no-repeat;background-color:black;background-attachment: scroll;background-position: center;">
+            <div class="row h-100 w-100 justify-content-center align-items-center text-cente">
+                <div class="col justify-content-center align-items-center text-center">
+                    <h1 class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">{{proposed_product.product_name_fr}}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}

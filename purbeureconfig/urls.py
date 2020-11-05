@@ -15,17 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
-from home import views
-from accounts import views as accountViews
+from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from products.views import index
 
-"""alouer les views"""
+"""allouer les views"""
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url("", index, name='index'),
+    path('admin/', admin.site.urls, name='admin'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('home/', views.get_product, name='home'),
-    path("", views.get_product, name='home'),
-    path('products/', include('products.urls')),
-    path('accounts/', include('accounts.urls')),
+    path('products/', include('products.urls'), name='products'),
+    path('accounts/', include('accounts.urls'), name='accounts'),
 ]

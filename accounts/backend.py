@@ -12,11 +12,3 @@ class CustomUserAuth(object):
         except CustomUser.DoesNotExist:
             return None
     
-    def get_user(self, user_id):
-        try:
-            user = CustomUser.objects.get(pk=user_id)
-            if user.is_active:
-                return user
-            return None
-        except CustomUser.DoesNotExist:
-            return None

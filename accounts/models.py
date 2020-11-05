@@ -5,9 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class CustomUserManager(BaseUserManager):
-    def _create_user(self, email, password, is_staff, is_superuser, **extra_fields):
+    def _create_user(self, email, password, **extra_fields):
         """
-        Creates and saves a User with the given email and password.
+        Creates and saves a User with teh given email and password.
 
         """
 
@@ -17,11 +17,6 @@ class CustomUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(
             email=email,
-            is_staff=is_staff,
-            is_active=True,
-            is_superuser=is_superuser,
-            last_login=models.DateField(auto_now=True),
-            date_joined=models.DateField(auto_now=True),
             **extra_fields
         )
         user.set_password(password)
@@ -29,20 +24,20 @@ class CustomUserManager(BaseUserManager):
         return user
     
 
-    def create_user(self, email, password, **extra_fields):
-        return self._create_user(email, password, False, False, **extra_fields)
+    def create_user(self, email, password=None, **extra_fields):
+        return self._create_user(email, password, **extra_fields)
     
-    def create_superuser(self, email, password, **extra_fields):
-        return self._create_user(email, password, True, True, **extra_fields)
+    def create_superuser(self, email, password=None, **extra_fields):
+        return self._create_user(email, password, **extra_fields)
 
 class CustomUser(AbstractBaseUser):
-    username = models.CharField(max_length=254, unique=True)
     first_name = models.CharField(max_length=254, blank=True)
     second_name = models.CharField(max_length=254, blank=True)
     email = models.EmailField(blank=True, unique=True)
 
+
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'second_name']
+    REQUIRED_FIELDS = ['first_name', 'second_name']
 
     objects = CustomUserManager()
 

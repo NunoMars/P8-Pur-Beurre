@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout, login
+from django.contrib.auth import logout, login, authenticate
 from products.models import Products
 from .backend import CustomUserAuth as CuA
 from .forms import CustomUserCreationForm
@@ -12,9 +12,9 @@ def create_account_view(request):
             email = form.cleaned_data['email']           
             first_name = form.cleaned_data['first_name']
             second_name = form.cleaned_data['second_name']
-            password = form.clean_password2
+            password = form.cleaned_data['password2']
 
-            user = CuA.authenticate(CuA ,username=email, password=password)
+            user = authenticate(request, username=email, password=password)
             
             if user == None:
                 user = CustomUser.objects.create_user(
@@ -24,7 +24,6 @@ def create_account_view(request):
                     email=email
                 )
                 user.save()
-                print(user)
                 login(request, user)
             else:
                 login(request, user)
@@ -39,30 +38,33 @@ def create_account_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        while True:        
-            username = request.POST['email']
-            password = request.POST['password']
-            user = CuA.authenticate(request, username=username, password=password)
-            print(user)
-            if user is not None:
-                login(request, user)
-                # Redirect to a success page.
-                msg = "Bienvenu"
-                return render(request, 'accounts/login.html', {'msg':msg})
-                
-            else:
-                # Return an 'invalid login' error message.
-                msg = "Compte utilisateur non trouvé!"
-                vars_to_template ={
-                    'msg':msg,
-                    'link':'../create_account',
-                    'link_msg': 'Créez un compte utilisateur!'
-                }
-                
-                return render(request,'accounts/login.html', vars_to_template)
+        """ Formulaire base django"""            
+        username = form.cleaned_data['email'] 
+        password = form.changed_data['password']
+        user =authenticate(CuA, username=username, password=password)
 
-    return render(request, 'accounts/login.html')
+        if user == None:
+            # Return an 'invalid login' error message.
+            msg = "Compte utilisateur non trouvé!"
+            vars_to_template ={
+                'form': form,
+                'msg':msg,
+                'link':'../create_account',
+                'link_msg': 'Créez un compte utilisateur!'
+            }
+            
+            return render(request,'accounts/login.html', vars_to_template)                
+                
+        else:
+            login(request, user)
+            # Redirect to a success page.
+            msg = "Bienvenu"
+            return render(request, 'accounts/login.html', {'msg':msg})
+
+    else:
+        """form = UserForm()"""
+
+    return render(request, 'accounts/login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
