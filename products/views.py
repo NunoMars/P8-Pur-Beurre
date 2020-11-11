@@ -1,63 +1,48 @@
 import random
+from django.utils.html import escape
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import GetProductChoiceForm, GetProductForm
 from .models import Products, History
-
 from accounts.models import CustomUser
 from django.contrib.auth.models import User
 
 def index(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        while True:
-            form = GetProductForm(request.POST)
-            # check whether it's valid:
-            if form.is_valid():
-                # process the data in form.cleaned_data as required
-                cherched_product = form.cleaned_data['cherched_product']
 
-                try:
-                    req = Products.objects.filter(
-                        product_name_fr__icontains=cherched_product
-                        )[:1]
-                    product = req[0]
-                    print(product.product)
-                    request.session['product'] = product.product             
-                    
-                except:
-                    not_found = "Impossible de trouver le produit recherché! Essayez encore."
-                    context={
-                       'form': form,
-                       'atention': not_found 
-                    }
-                    
-                    return render(request, 'products/index.html', context)
-                
-                # redirect to a new URL:
-                return HttpResponseRedirect('/products/product')
+    return render(request, 'products/index.html')
 
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = GetProductForm()
+def search(request):
+    #en, copier sur celinelever formulaire django et ecrire le mien
+    query = request.GET.get('query')
+    #Query Html escape
+    user_product = escape(query)
+    if not query:
         context = {
-            'form': form
-        }
+            'attention': "Vous devez renseigner un produit!!"
+            }
+        return render(request, 'products/index.html', context)
 
-    return render(request, 'products/index.html', context)
+    else:       
+        # Product contains the query is and query is not sensitive to case.
+        product = Products.objects.filter(
+            product_name_fr__icontains=user_product
+            )[:1]
 
+        if not product.exists():
+            context = {
+            'attention': "Produit non trouvé, essayer de chercher un autre produit svp!!"
+            }
+            return render(request, 'products/index.html', context)
+        else:
+            product=product[0]
 
-def get_user_choice(request, product_found):
-    product = Products.objects.get(product=product_found)
+            return redirect('products_list', product=product.product)
 
-    context = {
-        "proposed_product": product
-    }
-    return render(request, 'products/product_found.html', context)
+    return render(request, 'products/search_product.html', context)
 
-def get_products_choice(request, product):    
+def products_list(request, product):    
+    product = get_object_or_404(Products, product=product)
 
     query_set_product = Products.objects.filter(
         category=product.category
@@ -73,7 +58,7 @@ def get_products_choice(request, product):
         if not request.user.is_authenticated:
             return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))    
 
-        save = History(User, chosen_product=product_to_show, remplacement_product=save_product)
+        save = History(User, chosen_product=product.product, remplacement_product=save_product)
         save.save()        
 
         return HttpResponseRedirect('/products/product/')  
@@ -88,13 +73,14 @@ def get_products_choice(request, product):
 
 def product_view(request, product):
     
-    product = Products.objects.get(product=str(product))
-
+    product = Products.objects.get(product=product)
+    print(product)
     context = {
                 'product' : product,
             }
     
-    return render(request, 'products/product.html', context) 
+    return render(request, 'products/product_detail.html', context)
+
 
 def history(request):
     return render(request, 'products/history.html')

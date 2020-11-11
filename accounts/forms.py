@@ -17,3 +17,6 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('email', 'first_name', 'second_name')
 
 
+
+    
+    

@@ -38,7 +38,7 @@ def create_account_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        """ Formulaire base django"""            
+    
         username = form.cleaned_data['email'] 
         password = form.changed_data['password']
         user =authenticate(CuA, username=username, password=password)
@@ -62,7 +62,7 @@ def login_view(request):
             return render(request, 'accounts/login.html', {'msg':msg})
 
     else:
-        """form = UserForm()"""
+        pass
 
     return render(request, 'accounts/login.html', {'form': form})
 

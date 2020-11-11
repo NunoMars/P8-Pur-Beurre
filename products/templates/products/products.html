@@ -3,7 +3,18 @@
 {% block title %}Page Products{% endblock title %}
 
        
-{%include 'products/product_found.html'%}
+<!-- Masthead-->
+{% block header %}
+    <header class="masthead">                           
+        <div class="container-fluid bg-dark w-100 h-100" style="background: url('{{proposed_product.product_image_large}}');background-size: 50%;background-repeat: no-repeat;background-color:black;background-attachment: scroll;background-position: center;">
+            <div class="row h-100 w-100 justify-content-center align-items-center text-cente">
+                <div class="col justify-content-center align-items-center text-center">
+                    <h1 class="h-100 badge badge-primary text-wrap text-uppercase text-white font-weight-bold" style="border-radius:30px;">{{proposed_product.product_name_fr}}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
 
 {% block content %}
     <!-- Proposed products-->
@@ -24,11 +35,11 @@
                                 <h1>{{product.nutrition_grade_fr}}</h1>
                             </div>
                         </div>                                                            
-                        <button class="btn btn-default btn-block" type="submit" id="image_buton" name="submit" value = "{{product.product}}"><img class="w-75 p-3" src="{{product.product_image_large}}"></button>
+                        <a href="{% url 'product_detail' product.product %}"><img class="img-fluid" src="{{product.product_image_large}}"></a>
                         <h3>{{product.product_name_fr}}</h3>
                         <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger" name="submit" value = "save_{{product.product}}">Sauvegarder Produit</button>                    
                     </div>
-                    {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+                    {% if forloop.counter|divisibleby:3 %}</div><div class="row clearfix">{% endif %}
                 {% endfor %}     
             </form>               
         </div>

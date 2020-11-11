@@ -12,17 +12,7 @@
                     <h1 class="text-uppercase text-white font-weight-bold">Du gras, oui, mais de qualité!</h1>
                     <hr class="divider my-4" />
                 </div>
-                <div class="col-lg-8 align-self-baseline">
-                    <h2 class="text-white-75 font-weight-light mb-5">Tropuvez un produit de substitution pour ceux que vous consomez tous les jours!</h2>
-                    <form action="" id="message-form" method="POST">
-                        {% csrf_token %}
-                        {{ form }}                        
-                        <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger">
-                    </form>
-                    <div Color="red">
-                        <h2>{{atention}}</h2>
-                    </div>
-                </div>
+                {% include "products/search.html" %}
             </div>
         </div>
     </header>
