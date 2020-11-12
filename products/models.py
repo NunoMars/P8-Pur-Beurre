@@ -1,5 +1,4 @@
 from django.db import models
-from accounts.models import CustomUser
 
 
 class Categorys(models.Model):
@@ -22,18 +21,3 @@ class Products(models.Model):
     category = models.ForeignKey("Categorys", on_delete=models.CASCADE, default="category")
     class Meta:
         db_table = 'products'
-
-
-class History(models.Model):
-    """ Class to define the History table."""
-    CustomUser.username = models.ForeignKey("CustomUser", on_delete=models.CASCADE)
-    chosen_product = models.ForeignKey(
-        "Products", related_name='chosen_product', on_delete=models.CASCADE)
-    remplacement_product = models.ForeignKey(
-        "Products", related_name='remplacement_product', on_delete=models.CASCADE)
-
-    class Meta:
-        db_table = 'history'
-
-
-

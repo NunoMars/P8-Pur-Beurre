@@ -37,7 +37,7 @@
                         </div>                                                            
                         <a href="{% url 'product_detail' product.product %}"><img class="img-fluid" src="{{product.product_image_large}}"></a>
                         <h3>{{product.product_name_fr}}</h3>
-                        <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger" name="submit" value = "save_{{product.product}}">Sauvegarder Produit</button>                    
+                        <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger" name="submit" value = "{{product.product}}">Sauvegarder Produit</button>                    
                     </div>
                     {% if forloop.counter|divisibleby:3 %}</div><div class="row clearfix">{% endif %}
                 {% endfor %}     

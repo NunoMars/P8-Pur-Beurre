@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL="accounts.CustomUser"
 AUTHENTIFICATION_BACKENDS = ('accounts.backends.CustomUserAuth',)
+LOGOUT_REDIRECT_URL="home"
+LOGIN_REDIRECT_URL="history"
 
 ###################################################
 
