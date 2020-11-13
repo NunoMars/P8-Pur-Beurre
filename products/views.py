@@ -101,3 +101,7 @@ def history(request):
         "list_of_products" : products_list,
     }
     return render(request, 'products/history.html', context)
+
+def mentions_legales(request):
+
+    return render(request, 'products/mentions_legales.html')
