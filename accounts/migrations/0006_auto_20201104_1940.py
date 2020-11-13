@@ -6,34 +6,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0005_remove_customuser_username'),
+        ("accounts", "0005_remove_customuser_username"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='customuser',
-            name='date_joined',
+            model_name="customuser",
+            name="date_joined",
         ),
         migrations.RemoveField(
-            model_name='customuser',
-            name='is_active',
+            model_name="customuser",
+            name="is_active",
         ),
         migrations.RemoveField(
-            model_name='customuser',
-            name='is_staff',
+            model_name="customuser",
+            name="is_staff",
         ),
         migrations.RemoveField(
-            model_name='customuser',
-            name='is_superuser',
+            model_name="customuser",
+            name="is_superuser",
         ),
         migrations.AlterField(
-            model_name='customuser',
-            name='email',
+            model_name="customuser",
+            name="email",
             field=models.EmailField(blank=True, max_length=254, unique=True),
         ),
         migrations.AlterField(
-            model_name='customuser',
-            name='last_login',
-            field=models.DateTimeField(blank=True, null=True, verbose_name='last login'),
+            model_name="customuser",
+            name="last_login",
+            field=models.DateTimeField(
+                blank=True, null=True, verbose_name="last login"
+            ),
         ),
     ]

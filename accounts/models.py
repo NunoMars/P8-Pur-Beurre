@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
@@ -14,34 +13,31 @@ class CustomUserManager(BaseUserManager):
         """
 
         if not email:
-            raise ValueError('Vous devez renseigner un email!')
-        
+            raise ValueError("Vous devez renseigner un email!")
+
         email = self.normalize_email(email)
-        user = self.model(
-            email=email,
-            **extra_fields
-        )
+        user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
-    
 
     def create_user(self, email, password=None, **extra_fields):
         return self._create_user(email, password, **extra_fields)
-    
+
     def create_superuser(self, email, password, **extra_fields):
         """
         Create and save a SuperUser with the given email and password.
         """
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('is_active', True)
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("is_active", True)
 
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError(_('Superuser must have is_staff=True.'))
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError(_('Superuser must have is_superuser=True.'))
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError(_("Superuser must have is_staff=True."))
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError(_("Superuser must have is_superuser=True."))
         return self.create_user(email, password, **extra_fields)
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=254, blank=True)
@@ -50,15 +46,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     email = models.EmailField(blank=True, unique=True)
 
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'second_name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["first_name", "second_name"]
 
     objects = CustomUserManager()
 
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = _("user")
+        verbose_name_plural = _("users")
 
     def get_absolute_url(self):
         return "/users/%s/" % (self.email)
@@ -67,13 +62,21 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         full_name = "%s %s" % (self.first_name, self.second_name)
         return full_name.strip()
 
+
 class History(models.Model):
     """ Class to define the History table."""
+
     user = models.ForeignKey("CustomUser", on_delete=models.CASCADE)
     chosen_product = models.ForeignKey(
-        "products.Products", related_name='chosen_product', on_delete=models.CASCADE)
+        "products.Products",
+        related_name="chosen_product",
+        on_delete=models.CASCADE,
+    )
     remplacement_product = models.ForeignKey(
-        "products.Products", related_name='remplacement_product', on_delete=models.CASCADE)
+        "products.Products",
+        related_name="remplacement_product",
+        on_delete=models.CASCADE,
+    )
 
     class Meta:
-        db_table = 'history'
+        db_table = "history"

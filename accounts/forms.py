@@ -11,12 +11,6 @@ class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
 
-
     class Meta:
         model = CustomUser
-        fields = ('email', 'first_name', 'second_name')
-
-
-
-    
-    
+        fields = ("email", "first_name", "second_name")
