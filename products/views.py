@@ -61,8 +61,6 @@ def products_list(request, product):
         .exclude(product=product_found.product)
     )
 
-    print(query_set_product)
-
     random_six_products = random.sample(
         list(query_set_product), 6
     )  # select 6 products randomly

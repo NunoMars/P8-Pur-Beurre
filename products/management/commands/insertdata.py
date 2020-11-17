@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from products.models import Products, History, Categorys
+from products.models import Products, Categorys
 from products.download_products import DataFiles
 
 
