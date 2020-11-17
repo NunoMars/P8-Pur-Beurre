@@ -61,9 +61,12 @@ def products_list(request, product):
         .exclude(product=product_found.product)
     )
 
+    print(query_set_product)
+
     random_six_products = random.sample(
         list(query_set_product), 6
     )  # select 6 products randomly
+
 
     if (
         "submit" in request.POST
@@ -73,9 +76,9 @@ def products_list(request, product):
         if not request.user.is_authenticated:
             return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
         user = request.user
-        print(user)
+
         user = CustomUser.objects.get(email=user)
-        print(user.email)
+
         save = History(
             user=user,
             chosen_product=product_found,
