@@ -12,7 +12,7 @@ class Products(models.Model):
     """ Class to define the Product table. I used TextField because the lenght is superior than 200, and url field is biger"""
 
     product = models.CharField(max_length=20, primary_key=True)
-    nutrition_grade_fr = models.CharField(max_length=1)
+    nutrition_grade_fr = models.IntegerField()
     product_name_fr = models.TextField()
     ingredients_text_fr = models.TextField()
     product_image_large = models.TextField()

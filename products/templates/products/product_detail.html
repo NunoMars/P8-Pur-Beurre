@@ -24,15 +24,15 @@
             <div class="row">
                 <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
                 <h3>Nutriscore</h3>                                                           
-                {% if product.nutrition_grade_fr == "a" %}
+                {% if product.nutrition_grade_fr == 1 %}
                 <img src="{% static 'dist/assets/img/nutri-score-A.png' %}" width="100%">
-                {% elif product.nutrition_grade_fr == "b" %}
+                {% elif product.nutrition_grade_fr == 2 %}
                 <img src="{% static 'dist/assets/img/nutri-score-B.png' %}" width="100%">
-                {% elif product.nutrition_grade_fr == "c" %}
+                {% elif product.nutrition_grade_fr == 3 %}
                 <img src="{% static 'dist/assets/img/nutri-score-C.png' %}" width="100%">
-                {% elif product.nutrition_grade_fr == "d" %}
+                {% elif product.nutrition_grade_fr == 4 %}
                 <img src="{% static 'dist/assets/img/nutri-score-D.png' %}" width="100%">
-                {% elif product.nutrition_grade_fr == "e" %}
+                {% elif product.nutrition_grade_fr == 5 %}
                 <img src="{% static 'dist/assets/img/nutri-score-E.png' %}" width="100%">
                 {% else %}
                 <img src="{% static 'dist/assets/img/scores.png' %}">

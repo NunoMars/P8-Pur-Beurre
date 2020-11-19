@@ -55,13 +55,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         verbose_name = _("user")
         verbose_name_plural = _("users")
 
-    def get_absolute_url(self):
-        return "/users/%s/" % (self.email)
-
-    def get_full_name(self):
-        full_name = "%s %s" % (self.first_name, self.second_name)
-        return full_name.strip()
-
 
 class History(models.Model):
     """ Class to define the History table."""

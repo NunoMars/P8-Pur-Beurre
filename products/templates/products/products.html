@@ -32,7 +32,17 @@
                     <div class="col p-1 justify-content-center align-items-center text-center" style="position:relative;">
                         <div style="position:absolute;padding-left:75%;margin-top: -1rem !important;">
                             <div class="badge rounded-circle badge-primary text-wrap text-uppercase text-white font-weight-bold">
-                                <h1>{{product.nutrition_grade_fr}}</h1>
+                                {% if product.nutrition_grade_fr == 1 %}
+                                <h1>A</h1>
+                                {% elif product.nutrition_grade_fr == 2 %}
+                                <h1>B</h1>
+                                {% elif product.nutrition_grade_fr == 3 %}
+                                <h1>C</h1>
+                                {% elif product.nutrition_grade_fr == 4 %}
+                                <h1>D</h1>
+                                {% elif product.nutrition_grade_fr == 5 %}
+                                <h1>E</h1>
+                                {% endif %}                        
                             </div>
                         </div>                                                            
                         <a href="{% url 'product_detail' product.product %}"><img class="img-fluid" src="{{product.product_image_large}}"></a>

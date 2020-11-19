@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout, login, authenticate
-from products.models import Products
 from .backend import CustomUserAuth as CuA
 from .forms import CustomUserCreationForm
 from .models import CustomUser

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .forms import GetProductChoiceForm, GetProductForm
 from .models import Products
 from accounts.models import CustomUser, History
@@ -55,11 +56,14 @@ def products_list(request, product):
     """
     product_found = get_object_or_404(Products, product=product)
 
+    nut = product_found.nutrition_grade_fr
+
     query_set_product = (
         Products.objects.filter(category=product_found.category)
-        .filter(nutrition_grade_fr=product_found.nutrition_grade_fr)
+        .filter(Q(nutrition_grade_fr__lte = nut))#propose products with value less or equal at the search product
         .exclude(product=product_found.product)
     )
+   
 
     random_six_products = random.sample(
         list(query_set_product), 6
