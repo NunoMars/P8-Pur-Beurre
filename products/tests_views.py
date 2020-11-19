@@ -27,27 +27,45 @@ class AllDbTests(TestCase):
 
         i = 1
         while i <= 20:
+            
             c = Categorys(
                 category="category",
             )
             c.save()
-
-            p = Products(
-                product="123456"+str(i),
-                nutrition_grade_fr="T",
-                product_name_fr="Product"+str(i),
-                ingredients_text_fr="Ingredients"+str(i),
-                product_image_large="Product_img_l"+str(i),
-                product_image_small="Product_img_s"+str(i),
-                product_image_nutrition_large="Product_img_n_l"+str(i),
-                product_image_nutrition_small="Product_img_n_s"+str(i),
-                stores="Stores"+str(i),
-                url="Url"+str(i),
-                )
-            
-            cat = Categorys.objects.get(category="category")
-            p.category = cat
-            p.save()
+            if 1 <= 10:
+                p = Products(
+                    product="123456"+str(i),
+                    nutrition_grade_fr= 1,
+                    product_name_fr="Product"+str(i),
+                    ingredients_text_fr="Ingredients"+str(i),
+                    product_image_large="Product_img_l"+str(i),
+                    product_image_small="Product_img_s"+str(i),
+                    product_image_nutrition_large="Product_img_n_l"+str(i),
+                    product_image_nutrition_small="Product_img_n_s"+str(i),
+                    stores="Stores"+str(i),
+                    url="Url"+str(i),
+                    )
+                
+                cat = Categorys.objects.get(category="category")
+                p.category = cat
+                p.save()
+            else:
+                p = Products(
+                    product="123456"+str(i),
+                    nutrition_grade_fr= 2,
+                    product_name_fr="Product"+str(i),
+                    ingredients_text_fr="Ingredients"+str(i),
+                    product_image_large="Product_img_l"+str(i),
+                    product_image_small="Product_img_s"+str(i),
+                    product_image_nutrition_large="Product_img_n_l"+str(i),
+                    product_image_nutrition_small="Product_img_n_s"+str(i),
+                    stores="Stores"+str(i),
+                    url="Url"+str(i),
+                    )
+                
+                cat = Categorys.objects.get(category="category")
+                p.category = cat
+                p.save()
             i += 1
         
         user = CustomUser.objects.create(
