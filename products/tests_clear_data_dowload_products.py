@@ -11,6 +11,7 @@ from .download_products import DataFiles
     
 class DownloadProducts(TestCase):
     def test_call_openfoodfacts(self):
+        
         with open("for tests/products_data.json") as products_data:
             results_test = json.load(products_data)
 
