@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "purbeureconfig.wsgi.application"
+WSGI_APPLICATION = "purbeurreconfig.wsgi.application"
 
 
 # Database
