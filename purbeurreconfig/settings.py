@@ -60,7 +60,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "purbeureconfig.urls"
+ROOT_URLCONF = "purbeurreconfig.urls"
 
 TEMPLATES = [
     {

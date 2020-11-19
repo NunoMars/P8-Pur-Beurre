@@ -1,1 +1,1 @@
-web: gunicorn purbeurreconfig.wsgi:application --log-file - --log-level debug
+web: gunicorn purbeurreconfig.wsgi --log-file -
