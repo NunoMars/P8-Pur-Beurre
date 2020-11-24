@@ -134,3 +134,10 @@ def mentions_legales(request):
     """
 
     return render(request, "products/mentions_legales.html")
+
+def contact(request):
+    """
+    Show the 'contact'!
+    """
+
+    return render(request, "contact.html")

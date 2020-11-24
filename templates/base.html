@@ -19,7 +19,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'dist/css/styles.css' %}" rel="stylesheet" />
     </head>
-    <body id="page-top">
+    <header id="page-top">
         <!-- Navigation-->
         {% block nav %}
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -47,9 +47,9 @@
         {% block header %}{% endblock header %}
         <!-- About-->
         {% block content %}{% endblock content %}
-        
-        <!-- Footer-->
-        {% block footer %}
+    </header>        
+    <!-- Footer-->
+    {% block footer %}
             <!-- Contact-->
         <footer class="bg-light py-5">
             <section class="page-section">
@@ -59,7 +59,7 @@
                             <a class="d-block" href="{% url 'mentions_legales' %}"><h2 class="mt-0">Mentions legales!</h2></a>
                         </div>
                         <div class="col text-center">                            
-                            <a class="d-block" href="../home/#contact"><h2 class="mt-0">Contactez-nous!</h2></a>
+                            <a class="d-block" href="{% url 'contact' %}"><h2 class="mt-0">Contactez-nous!</h2></a>
                         </div>
                     </div>
 
@@ -68,14 +68,14 @@
                 </div>
             </section>
         </footer>
-        {% endblock footer %}
-                <!-- Bootstrap core JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'dist/js/scripts.js' %}"></script>
-    </body>
+    {% endblock footer %}
+            <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'dist/js/scripts.js' %}"></script>
+
 </html>
