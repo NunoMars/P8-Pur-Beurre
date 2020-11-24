@@ -21,6 +21,13 @@ class MentionsLegalesPageTestCase(TestCase):
         response = self.client.get(reverse('mentions_legales'))
         self.assertEqual(response.status_code, 200)
 
+
+class ContactTestCase(TestCase):
+    def test_contact_page(self):
+        response = self.client.get(reverse('contact'))
+        self.assertEqual(response.status_code, 200)
+
+
 class AllDbTests(TestCase):
 
     def setUp(self):
