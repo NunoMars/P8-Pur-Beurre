@@ -40,19 +40,19 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "products.apps.ProductsConfig",
     "accounts.apps.AccountsConfig",
-    #'django_nose',
+    'django_nose',
 ]
 
-"""
+
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # Tell nose to measure coverage on the 'foo' and 'bar' apps
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=foo,bar',
+    '--cover-package=products,accounts',
 ]
-"""
+
 ######################AUTH#########################
 
 AUTH_USER_MODEL = "accounts.CustomUser"
