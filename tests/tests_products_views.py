@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Products, Categorys
+from products.models import Products, Categorys
 from accounts.models import CustomUser, History
 
 class IndexPageTest(TestCase):
@@ -109,5 +109,4 @@ class AllDbTests(TestCase):
     def test_history_page(self):
         response = self.client.get(reverse('history'))
         self.assertEqual(response.status_code, 302)
-
 

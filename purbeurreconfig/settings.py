@@ -50,7 +50,10 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # Tell nose to measure coverage on the 'foo' and 'bar' apps
 NOSE_ARGS = [
     '--with-coverage',
+    '--cover-inclusive',
     '--cover-package=products,accounts',
+    '--cover-tests',
+    '--exe',
 ]"""
 
 ######################AUTH#########################

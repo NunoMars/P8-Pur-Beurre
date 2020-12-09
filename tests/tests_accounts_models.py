@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import authenticate
-from .models import CustomUser
-from .backend import CustomUserAuth
+from accounts.models import CustomUser
+from accounts.backend import CustomUserAuth
 
 class UserCreationTest(TestCase):
     def setUp(self):

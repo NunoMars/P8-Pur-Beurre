@@ -10,7 +10,7 @@ from django.test import RequestFactory
 from django.urls import reverse
 from django.shortcuts import render, redirect
 
-from .models import Products
+from products.models import Products
 from accounts.models import CustomUser
 
 

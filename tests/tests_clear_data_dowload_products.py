@@ -1,12 +1,12 @@
 import json
 import requests
 from django.test import TestCase
-from .clear_data import (
+from products.clear_data import (
     clean_data,
     eliminate_duplicate_products,
 )
 
-from .download_products import DataFiles
+from products.download_products import DataFiles
 
     
 class DownloadProducts(TestCase):

@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import GetProductChoiceForm, GetProductForm
+from products.forms import GetProductChoiceForm, GetProductForm
 
 
 class GetProductChoiceFormTest(TestCase):
