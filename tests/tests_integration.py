@@ -97,9 +97,8 @@ class TestIntegrations(StaticLiveServerTestCase):
         url = reverse("logout")
         self.driver.get(self.live_server_url + url)
         
-        url_auth_icon = "static/dist/assets/img/account.png"
        
-        self.assertTrue(self.live_server_url + url_auth_icon)
+        self.assertTrue(self.driver.find_element_by_id('account_icon'))
 
 
 
