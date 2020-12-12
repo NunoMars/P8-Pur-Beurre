@@ -15,9 +15,9 @@ from accounts.models import CustomUser
 
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless')
+chrome_options.add_argument('-headless')
 chrome_options.add_argument('window-size=1920x1080')
-chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:90014")
+
 
 class TestIntegrations(StaticLiveServerTestCase):
     """Functional tests using the Chrome web browser in headless mode."""
@@ -58,29 +58,25 @@ class TestIntegrations(StaticLiveServerTestCase):
         url = reverse("create_account")
         self.driver.get(self.live_server_url + url)
         self.driver.find_element_by_name('email').send_keys(
-            "email@email.com"
+            "email1@email.com"
         )
         self.driver.find_element_by_name('first_name').send_keys(
-            "first_name"
+            "first_name1"
         )
         self.driver.find_element_by_name('second_name').send_keys(
-            "second_name"
+            "second_name1"
         )
         self.driver.find_element_by_name('password1').send_keys(
-            "12345678"
+            "123456789"
         )
         self.driver.find_element_by_name('password2').send_keys(
-            "12345678"
+            "123456789"
         )
         self.driver.find_element_by_tag_name('input').submit()
-
-        url = reverse("logout")
-        self.driver.get(self.live_server_url + url)
-
-        page_url = self.driver.current_url
-        url2 = reverse('home')
         
-        self.assertEqual(page_url, self.live_server_url + url2)
+        print(CustomUser.objects.all())
+
+        self.assertTrue(CustomUser.objects.filter(email='email1@email.com').exists())
 
 
     def test_user_can_connect_and_disconnect(self):
@@ -95,12 +91,17 @@ class TestIntegrations(StaticLiveServerTestCase):
         )
         self.driver.find_element_by_id("login-form").submit()
 
+      
+        self.assertTrue(self.driver.find_element_by_id('auth_icon'))
+
         url = reverse("logout")
         self.driver.get(self.live_server_url + url)
-
-        page_url = self.driver.current_url
-        url2 = reverse('home')
         
-        self.assertEqual(page_url, self.live_server_url + url2)
+        url_auth_icon = "static/dist/assets/img/account.png"
+       
+        self.assertTrue(self.live_server_url + url_auth_icon)
 
 
+
+
+        

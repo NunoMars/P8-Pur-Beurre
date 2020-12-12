@@ -20,7 +20,7 @@ def create_account_view(request):
             user = authenticate(request, username=email, password=password)
 
             if user == None:
-                user = CustomUser.objects.create_user(
+                user = CustomUser.objects.create(
                     password=password,
                     first_name=first_name,
                     second_name=second_name,
