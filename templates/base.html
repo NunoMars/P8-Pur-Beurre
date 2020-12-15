@@ -30,7 +30,7 @@
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'home' %}"><button type="submit" class="btn btn-primary js-scroll-trigger">Rechercher</button></a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'login' %}">
+                        <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="{% url 'login' %}">
                         {% if user.is_authenticated %}
                             <img id="auth_icon" height="45px" width="45px" src="{% static 'dist/assets/img/auth.png' %}"/></a>    
                         {% else %}

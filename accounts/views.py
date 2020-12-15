@@ -27,6 +27,7 @@ def create_account_view(request):
                     email=email,
                 )
                 user.save()
+
                 login(request, user)
             else:
                 login(request, user)

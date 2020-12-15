@@ -1,16 +1,11 @@
-from purbeurreconfig.settings import BASE_DIR
+from purbeurreconfig.settings import BASE_DIR, FIXTURE_DIRS
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from django.contrib.auth import logout, login
-import unittest
+
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from django.test import RequestFactory
 
 from django.urls import reverse
-from django.shortcuts import render, redirect
 
-from products.models import Products
+from products.models import Products, Categorys
 from accounts.models import CustomUser
 
 
@@ -22,6 +17,7 @@ chrome_options.add_argument('window-size=1920x1080')
 class TestIntegrations(StaticLiveServerTestCase):
     """Functional tests using the Chrome web browser in headless mode."""
     
+    """fixtures = ['dump.json'] """
 
     @classmethod
     def setUpClass(cls):
@@ -30,7 +26,7 @@ class TestIntegrations(StaticLiveServerTestCase):
             executable_path=str(BASE_DIR / 'webdrivers' / 'chromedriver'),
             options=chrome_options,
             )
-        cls.driver.maximize_window()
+        cls.driver.maximize_window()    
 
     @classmethod
     def tearDownClass(cls):
@@ -38,67 +34,113 @@ class TestIntegrations(StaticLiveServerTestCase):
         cls.driver.quit()        
 
     def test_results_page_shows(self):
+        i = 1
+        while i <= 20:
+            
+            c = Categorys(
+                category="category",
+            )
+            c.save()
+            if 1 <= 10:
+                p = Products(
+                    product="123456"+str(i),
+                    nutrition_grade_fr= 1,
+                    product_name_fr="Product"+str(i),
+                    ingredients_text_fr="Ingredients"+str(i),
+                    product_image_large="Product_img_l"+str(i),
+                    product_image_small="Product_img_s"+str(i),
+                    product_image_nutrition_large="Product_img_n_l"+str(i),
+                    product_image_nutrition_small="Product_img_n_s"+str(i),
+                    stores="Stores"+str(i),
+                    url="Url"+str(i),
+                    )
+                
+                cat = Categorys.objects.get(category="category")
+                p.category = cat
+                p.save()
+            else:
+                p = Products(
+                    product="123456"+str(i),
+                    nutrition_grade_fr= 2,
+                    product_name_fr="Product"+str(i),
+                    ingredients_text_fr="Ingredients"+str(i),
+                    product_image_large="Product_img_l"+str(i),
+                    product_image_small="Product_img_s"+str(i),
+                    product_image_nutrition_large="Product_img_n_l"+str(i),
+                    product_image_nutrition_small="Product_img_n_s"+str(i),
+                    stores="Stores"+str(i),
+                    url="Url"+str(i),
+                    )
+                
+                cat = Categorys.objects.get(category="category")
+                p.category = cat
+                p.save()
+            i += 1
 
         self.driver.get(self.live_server_url)
-        self.driver.find_element_by_id("searchForm").send_keys('maison')
+        self.driver.find_element_by_id("searchForm").send_keys('Product')
         self.driver.find_element_by_id("searchForm").submit()
 
         page_url = self.driver.current_url
 
-        server = self.live_server_url
-        url_test = reverse('search_product')
-        url = ''.join((server,url_test))
-        args = "query=maison"
-        final_url = '?'.join((url,args))
-
-        self.assertEqual(page_url, final_url)
+        self.assertTrue(self.driver.title == 'Page Products')
 
     def test_create_account(self):
 
         url = reverse("create_account")
         self.driver.get(self.live_server_url + url)
-        self.driver.find_element_by_name('email').send_keys(
-            "email1@email.com"
-        )
-        self.driver.find_element_by_name('first_name').send_keys(
-            "first_name1"
-        )
-        self.driver.find_element_by_name('second_name').send_keys(
-            "second_name1"
-        )
-        self.driver.find_element_by_name('password1').send_keys(
-            "123456789"
-        )
-        self.driver.find_element_by_name('password2').send_keys(
-            "123456789"
-        )
-        self.driver.find_element_by_tag_name('input').submit()
-        
-        print(CustomUser.objects.all())
 
-        self.assertTrue(CustomUser.objects.filter(email='email1@email.com').exists())
+        username_input = self.driver.find_element_by_name("email")
+        username_input.send_keys('remi@purbeurre.com')
+
+        first_name_input = self.driver.find_element_by_name("first_name")
+        first_name_input.send_keys('remi')
+
+        second_name_input = self.driver.find_element_by_name("second_name")
+        second_name_input.send_keys('petitchef')
+
+        password1_input = self.driver.find_element_by_name("password1")
+        password1_input.send_keys('a.345679')
+
+        password2_input = self.driver.find_element_by_name("password2")
+        password2_input.send_keys('a.345679')
+
+        self.driver.find_element_by_xpath('//input[@value="Submit"]').click()
+
+
+        element = self.driver.find_element_by_id("auth_icon")
+        self.assertTrue(element.is_displayed())
 
 
     def test_user_can_connect_and_disconnect(self):
+
+        user = CustomUser.objects.create(
+            email="souris@purbeurre.com",
+            first_name="souris",
+            second_name="petitte",
+            password="a.1234S1"
+            )
+
         url = reverse("login")
         self.driver.get(self.live_server_url + url)
 
-        self.driver.find_element_by_id('id_username').send_keys(
-            "email@email.com"
-        )
-        self.driver.find_element_by_id('id_password').send_keys(
-            "12345678"
-        )
-        self.driver.find_element_by_id("login-form").submit()
+        username = self.driver.find_element_by_id('id_username')
+        username.send_keys("souris@purbeurre.com")
 
-      
-        self.assertTrue(self.driver.find_element_by_id('auth_icon'))
+        password = self.driver.find_element_by_id('id_password')
+        password.send_keys("a.1234S1")
+
+        self.driver.find_element_by_xpath('//input[@value="Login"]').click()
+
+
+        element = self.driver.find_element_by_id("auth_icon")
+        self.assertTrue(element.is_displayed())
 
         url = reverse("logout")
         self.driver.get(self.live_server_url + url)
         
-       
-        self.assertTrue(self.driver.find_element_by_id('account_icon'))
+        element = self.driver.find_element_by_id("account_icon")
+        self.assertTrue(element.is_displayed())
 
 
 
