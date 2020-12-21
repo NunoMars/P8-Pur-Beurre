@@ -2,6 +2,9 @@ from purbeurreconfig.settings import BASE_DIR, FIXTURE_DIRS
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from django.urls import reverse
 
@@ -17,8 +20,6 @@ chrome_options.add_argument('window-size=1920x1080')
 class TestIntegrations(StaticLiveServerTestCase):
     """Functional tests using the Chrome web browser in headless mode."""
     
-    """fixtures = ['dump.json'] """
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -34,6 +35,9 @@ class TestIntegrations(StaticLiveServerTestCase):
         cls.driver.quit()        
 
     def test_results_page_shows(self):
+        '''
+        Tests the search page, and the products page.
+        '''
         i = 1
         while i <= 20:
             
@@ -81,11 +85,15 @@ class TestIntegrations(StaticLiveServerTestCase):
         self.driver.find_element_by_id("searchForm").send_keys('Product')
         self.driver.find_element_by_id("searchForm").submit()
 
-        page_url = self.driver.current_url
+        
 
         self.assertTrue(self.driver.title == 'Page Products')
 
+
     def test_create_account(self):
+        '''
+        Tests the account creation page an verify that the account icon change.
+        '''
 
         url = reverse("create_account")
         self.driver.get(self.live_server_url + url)
@@ -113,16 +121,20 @@ class TestIntegrations(StaticLiveServerTestCase):
 
 
     def test_user_can_connect_and_disconnect(self):
-
-        user = CustomUser.objects.create(
+        '''
+        Tests the login and logout pages.
+        '''
+       
+        user = CustomUser.objects.create_user(
             email="souris@purbeurre.com",
             first_name="souris",
-            second_name="petitte",
+            second_name="petite",
             password="a.1234S1"
             )
 
         url = reverse("login")
         self.driver.get(self.live_server_url + url)
+
 
         username = self.driver.find_element_by_id('id_username')
         username.send_keys("souris@purbeurre.com")
@@ -132,8 +144,10 @@ class TestIntegrations(StaticLiveServerTestCase):
 
         self.driver.find_element_by_xpath('//input[@value="Login"]').click()
 
-
-        element = self.driver.find_element_by_id("auth_icon")
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, "auth_icon"))
+        )
+        
         self.assertTrue(element.is_displayed())
 
         url = reverse("logout")

@@ -3,6 +3,9 @@ from products.forms import GetProductChoiceForm, GetProductForm
 
 
 class GetProductChoiceFormTest(TestCase):
+    '''
+    Tests the Product Choice form.
+    '''
 
     def test_cherched_product_field_label(self):
         form = GetProductChoiceForm()
@@ -16,6 +19,9 @@ class GetProductChoiceFormTest(TestCase):
 
 
 class GetProductFormTest(TestCase):
+    '''
+    Tests the Get Product form.
+    '''
     def test_cherched_product_field_label(self):
         form = GetProductForm()
         self.assertTrue(

@@ -31,6 +31,9 @@ class ContactTestCase(TestCase):
 class AllDbTests(TestCase):
 
     def setUp(self):
+        '''
+        Creates the Database and one user for tests.
+        '''
 
         i = 1
         while i <= 20:
