@@ -11,4 +11,3 @@ urlpatterns = [
     path("products/", include("products.urls"), name="products"),
     path("accounts/", include("accounts.urls"), name="accounts"),
 ]
-

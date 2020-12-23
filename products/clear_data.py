@@ -30,9 +30,7 @@ def clean_data(file1, file2):
                 selected = product["selected_images"]
                 if len(selected.keys()) == 3:
                     try:
-                        product_image_large = selected["front"]["display"][
-                            "fr"
-                        ]
+                        product_image_large = selected["front"]["display"]["fr"]
                         current_product.update(
                             {"product_image_large": product_image_large}
                         )
@@ -48,9 +46,9 @@ def clean_data(file1, file2):
                                 "product_image_nutrition_large": product_image_nutrition_large
                             }
                         )
-                        product_image_nutrition_small = selected["nutrition"][
-                            "small"
-                        ]["fr"]
+                        product_image_nutrition_small = selected["nutrition"]["small"][
+                            "fr"
+                        ]
                         current_product.update(
                             {
                                 "product_image_nutrition_small": product_image_nutrition_small

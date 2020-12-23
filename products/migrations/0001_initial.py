@@ -16,9 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "category",
-                    models.CharField(
-                        max_length=50, primary_key=True, serialize=False
-                    ),
+                    models.CharField(max_length=50, primary_key=True, serialize=False),
                 ),
             ],
             options={
@@ -30,9 +28,7 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "product",
-                    models.CharField(
-                        max_length=20, primary_key=True, serialize=False
-                    ),
+                    models.CharField(max_length=20, primary_key=True, serialize=False),
                 ),
                 ("nutrition_grade_fr", models.CharField(max_length=1)),
                 ("product_name_fr", models.TextField()),

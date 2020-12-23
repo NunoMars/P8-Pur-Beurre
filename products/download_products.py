@@ -48,9 +48,7 @@ class DataFiles:
             if len(self.current_product) != 0:
                 self.all_products.extend(self.current_product)
 
-        self.products_to_inser = eliminate_duplicate_products(
-            self.all_products
-        )
+        self.products_to_inser = eliminate_duplicate_products(self.all_products)
 
 
 if __name__ == "__main__":

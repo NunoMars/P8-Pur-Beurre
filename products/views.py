@@ -33,9 +33,7 @@ def search(request):
 
     else:
         # Product contains the query is and query is not sensitive to case.
-        product = Products.objects.filter(
-            product_name_fr__icontains=user_product
-        )[:1]
+        product = Products.objects.filter(product_name_fr__icontains=user_product)[:1]
 
         if not product.exists():
             context = {
@@ -52,7 +50,9 @@ def search(request):
 
 def products_list(request, product):
     """
-    It shows the recherched product name and image, generates one list randomly of 6 products, and save the products selected by the user if he is loged in.
+    It shows the recherched product name and image, generates one list
+    randomly of 6 products, and save the products selected
+    by the user if he is loged in.
     """
     product_found = get_object_or_404(Products, product=product)
 
@@ -60,19 +60,17 @@ def products_list(request, product):
 
     query_set_product = (
         Products.objects.filter(category=product_found.category)
-        .filter(Q(nutrition_grade_fr__lte = nut))#propose products with value less or equal at the search product
+        .filter(
+            Q(nutrition_grade_fr__lte=nut)
+        )  # propose products with value less or equal at the search product
         .exclude(product=product_found.product)
     )
-   
 
     random_six_products = random.sample(
         list(query_set_product), 6
     )  # select 6 products randomly
 
-
-    if (
-        "submit" in request.POST
-    ):  # do something with interview_HTML button is clicked
+    if "submit" in request.POST:  # do something with interview_HTML button is clicked
         save_product = request.POST.get("submit")
         save_product = Products.objects.get(product=save_product)
         if not request.user.is_authenticated:
@@ -109,7 +107,8 @@ def product_view(request, product):
 
 @login_required()
 def history(request):
-    """Fonction for show the products, tha are chosed by the user, login required."""
+    """Fonction for show the products,
+    tha are chosed by the user, login required."""
     user = request.user
     user = CustomUser.objects.get(email=user)
 
@@ -134,6 +133,7 @@ def mentions_legales(request):
     """
 
     return render(request, "products/mentions_legales.html")
+
 
 def contact(request):
     """

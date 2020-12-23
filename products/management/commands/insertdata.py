@@ -27,7 +27,7 @@ class Command(BaseCommand):
             for data_dict in products_to_insert:
                 c = Categorys(category=data_dict["category"])
                 c.save()
-                
+
                 if data_dict["nutrition_grade_fr"] == "a":
                     nut = 1
                 if data_dict["nutrition_grade_fr"] == "b":
@@ -38,7 +38,7 @@ class Command(BaseCommand):
                     nut = 4
                 if data_dict["nutrition_grade_fr"] == "e":
                     nut = 5
-                
+
                 p = Products(
                     product=str(data_dict["product"]),
                     nutrition_grade_fr=nut,
