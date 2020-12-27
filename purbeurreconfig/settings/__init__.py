@@ -103,8 +103,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",  # on utilise l'adaptateur postgresql
         "NAME": "PurBeurre",  # le nom de notre base de donnees creee precedemment
-        "USER": "nuno",  # attention : remplacez par votre nom d'utilisateur
-        "PASSWORD": "nunotheboss",
+        "USER": "Remi",  # attention : remplacez par votre nom d'utilisateur
+        "PASSWORD": "remisansfamille",
         "HOST": "",
         "PORT": "5432",
     }
