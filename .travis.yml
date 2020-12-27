@@ -1,14 +1,16 @@
 language: python
 python:
   - '3.8.1'
-
-before_script:
+before_install:
+  - python -m pip install --upgrade pip
+install:
   - pip install -r requirements.txt
 
 services:
   - postgresql
 
-env: DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
+env:
+  - DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
 
 script:
   - python manage.py test
