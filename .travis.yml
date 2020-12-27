@@ -9,11 +9,11 @@ install:
 services:
   - postgresql
 
-env:
-  - DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
-
 before_script:
   - psql -c 'create database purbeurre;' -U postgres
+
+env:
+  - DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
 
 script:
   - python manage.py makemigrations
