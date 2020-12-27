@@ -10,5 +10,8 @@ env: DJANGO_SETTINGS_MODULE="purbeurreconfig.settings"
 services:
   - postgresql
 
+before_script:
+  - psql -c "CREATE DATABASE PurBeurre;" -U postgres
+  - psql -c "CREATE USER nuno WITH PASSWORD 'nunotheboss';" -U postgres
 script:
   - python manage.py test
