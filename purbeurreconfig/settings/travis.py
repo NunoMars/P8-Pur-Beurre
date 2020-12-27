@@ -1,5 +1,16 @@
 SECRET_KEY = '-~aO;| F;rE[??/w^zc4mh(9'
 
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "products.apps.ProductsConfig",
+    "accounts.apps.AccountsConfig",
+]
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",  # on utilise l'adaptateur postgresql
