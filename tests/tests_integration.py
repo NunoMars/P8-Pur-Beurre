@@ -24,7 +24,7 @@ class TestIntegrations(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.driver = webdriver.Chrome(
-            executable_path=str(BASE_DIR / 'webdrivers' / 'chromedriver'),
+            executable_path=str(BASE_DIR / 'chromedriver'),
             options=chrome_options,
             )
         cls.driver.maximize_window()    
