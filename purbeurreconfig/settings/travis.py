@@ -1,3 +1,7 @@
+
+DEBUG = False
+TEMPLATE_DEBUG = True
+
 SECRET_KEY = '-~aO;| F;rE[??/w^zc4mh(9'
 
 INSTALLED_APPS = [
@@ -12,6 +16,6 @@ DATABASES = {
         "USER": "postgres",  # attention : remplacez par votre nom d'utilisateur
         "PASSWORD": "",
         "HOST": "",
-        "PORT": "",
+        "PORT": "127.0.0.1",
     }
 }

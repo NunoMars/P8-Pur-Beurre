@@ -4,6 +4,7 @@ python:
 before_install:
   - python -m pip install --upgrade pip
 install:
+  - pip install -q Django==$DJANGO
   - pip install -r requirements.txt
 
 services:
@@ -14,6 +15,8 @@ before_script:
 
 env:
   - DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
+  - PIP_USE_MIRRORS=true
+  - BUILD_ON_TRAVIS=true
 
 script:
   - python manage.py makemigrations
