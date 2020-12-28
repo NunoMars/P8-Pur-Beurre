@@ -1,4 +1,7 @@
 from . import *
+import django
+
+django.setup()
 
 DEBUG = False
 TEMPLATE_DEBUG = True
