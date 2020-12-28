@@ -16,6 +16,5 @@ env:
   - DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
 
 script:
-  - python manage.py makemigrations
   - python manage.py migrate
   - python manage.py test
