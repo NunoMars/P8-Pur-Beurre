@@ -4,7 +4,6 @@ python:
 before_install:
   - python -m pip install --upgrade pip
 install:
-  - pip install -q Django==$DJANGO
   - pip install -r requirements.txt
 
 services:
