@@ -10,12 +10,15 @@ addons:
 
 before_install:
   - python -m pip install --upgrade pip
-
+  
 install:
   - pip install -r requirements.txt
 
 services:
   - postgresql
+
+before_script:
+  - psql -c 'create database purbeurre;' -U postgres
 
 env:
   - DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
