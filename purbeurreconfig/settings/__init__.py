@@ -154,4 +154,6 @@ STATICFILES_DIRS = [
 ]
 
 FIXTURE_DIRS = (os.path.join(BASE_DIR, "fixtures"),)
-django_heroku.settings(locals())
+# Configure Django App for Heroku.
+django_heroku.settings(locals(), test_runner=False)
+
