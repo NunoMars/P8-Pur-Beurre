@@ -40,13 +40,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "products.apps.ProductsConfig",
     "accounts.apps.AccountsConfig",
-    'django_crontab',
+
     #'django_nose',
 ]
 
-CRONJOBS = [
-    ('* 23 * * 7', 'django.core.management.call_command', ['insertdata']),
-]
+
 
 """# Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
