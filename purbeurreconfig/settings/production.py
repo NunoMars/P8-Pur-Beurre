@@ -1,8 +1,17 @@
 from . import *
 
-SECRET_KEY = '-~aO;| F;rE[??/w^zcumh(9'
+SECRET_KEY = '\\\ta(xZQ;xUIly1X@IGT:4re$'
 DEBUG = False
-ALLOWED_HOSTS = ['142.93.71.71']
+ALLOWED_HOSTS = ['104.236.42.41']
+
+INSTALLED_APPS += [
+    'django_crontab',
+]    
+
+CRONJOBS = [
+    ('* 23 * * 7', 'django.core.management.call_command', ['insertdata']),
+]
+
 
 DATABASES = {
     "default": {
