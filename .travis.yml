@@ -3,11 +3,8 @@ language: python
 python:
   - '3.8.1'
 
-addons:
-  chrome: stable
-
 before_install:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+t &
   - python -m pip install --upgrade pip
   
 install:
@@ -17,6 +14,12 @@ services:
   - postgresql
 
 before_script:
+  - wget http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip
+
+  - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
+
+  - export CHROME_BIN=chromium-browser
+  
   - psql -c 'create database purbeurre;' -U postgres
 
 env:
