@@ -4,7 +4,6 @@ python:
   - '3.8.1'
 
 before_install:
-t &
   - python -m pip install --upgrade pip
   
 install:
@@ -13,8 +12,7 @@ install:
 services:
   - postgresql
 
-before_script:
-  
+before_script:  
   - wget http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip
 
   - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
@@ -24,7 +22,6 @@ before_script:
   - psql -c 'create database purbeurre;' -U postgres
 
 env:
-
   - DJANGO_SETTINGS_MODULE=purbeurreconfig.settings.travis
 
 script:
