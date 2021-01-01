@@ -1,3 +1,15 @@
+dist: xenial
+sudo: yes
+
+addons:
+    chrome: stable
+    apt:
+        packages:
+            - chromium-chromedriver
+
+before_script:
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+  
 language: python
 
 python:
