@@ -1,15 +1,3 @@
-dist: xenial
-sudo: yes
-
-addons:
-    chrome: stable
-    apt:
-        packages:
-            - chromium-chromedriver
-
-before_script:
-  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
-  
 language: python
 
 python:
@@ -25,9 +13,11 @@ services:
   - postgresql
 
 before_script:
-  - wget http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip
+  - wget https://chromedriver.storage.googleapis.com/88.0.4324.27/chromedriver_linux64.zip
 
   - unzip chromedriver_linux64.zip -d /home/travis/build/NunoMars/P8-Pur-Beurre/
+
+  - export CHROME_BIN=chromium-browser
 
   - psql -c 'create database purbeurre;' -U postgres
 
