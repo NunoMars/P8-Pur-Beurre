@@ -17,8 +17,6 @@ before_script:
 
   - unzip chromedriver_linux64.zip -d /home/travis/build/NunoMars/P8-Pur-Beurre/
 
-  - export CHROME_BIN=chromium-browser
-
   - psql -c 'create database purbeurre;' -U postgres
 
 env:
