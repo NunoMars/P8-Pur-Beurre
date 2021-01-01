@@ -13,8 +13,6 @@ services:
   - postgresql
 
 before_script:
-  - mkdir /home/travis/build/NunoMars/P8-Pur-Beurre/
-
   - wget http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip
 
   - unzip chromedriver_linux64.zip -d /home/travis/build/NunoMars/P8-Pur-Beurre/
