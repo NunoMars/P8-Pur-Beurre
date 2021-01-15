@@ -9,6 +9,7 @@ from .forms import GetProductChoiceForm, GetProductForm
 from .models import Products
 from accounts.models import CustomUser, History
 from django.contrib.auth.models import User
+from .new_functionality import insert_products_if_not_in_found_in_data_base
 
 
 def index(request):
@@ -36,9 +37,14 @@ def search(request):
         product = Products.objects.filter(product_name_fr__icontains=user_product)[:1]
 
         if not product.exists():
-            context = {
-                "attention": "Produit non trouvé, essayer de chercher un autre produit svp!!"
-            }
+            try:
+                insert_products_if_not_in_found_in_data_base(user_product)#new_feature
+                product = Products.objects.filter(product_name_fr__icontains=user_product)[:1]
+                return redirect("products_list", product=product.product)
+            except:
+                context = {
+                    "attention": "Produit non trouvé, essayer de chercher un autre produit svp!!"
+                }
             return render(request, "products/index.html", context)
         else:
             product = product[0]

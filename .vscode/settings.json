@@ -6,4 +6,5 @@
         "postgres",
         "postgresql"
     ],
+    "python.pythonPath": "c:\\OPENCLASSROOMS\\Projet11\\P8-Pur-Beurre\\venv\\Scripts\\python.exe",
 }
