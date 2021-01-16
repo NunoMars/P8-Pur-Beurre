@@ -38,9 +38,10 @@ def search(request):
 
         if not product.exists():
             try:
-                insert_products_if_not_in_found_in_data_base(user_product)#new_feature
-                product = Products.objects.filter(product_name_fr__icontains=user_product)[:1]
-                return redirect("products_list", product=product.product)
+                new_product = insert_products_if_not_in_found_in_data_base(user_product)#new_feature
+                product = Products.objects.filter(product_name_fr__icontains=new_product)[:1]
+
+                return redirect("products_list", product=product[0].product)
             except:
                 context = {
                     "attention": "Produit non trouvé, essayer de chercher un autre produit svp!!"
@@ -72,9 +73,13 @@ def products_list(request, product):
         .exclude(product=product_found.product)
     )
 
-    random_six_products = random.sample(
-        list(query_set_product), 6
-    )  # select 6 products randomly
+    if len(query_set_product) >= 6:
+        random_six_products = random.sample(
+            list(query_set_product), 6
+        )  # select 6 products randomly
+    else:
+        random_six_products = query_set_product
+
 
     if "submit" in request.POST:  # do something with interview_HTML button is clicked
         save_product = request.POST.get("submit")

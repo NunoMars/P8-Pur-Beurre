@@ -33,10 +33,9 @@ def insert_products_if_not_in_found_in_data_base(product):
 
     cleaned_products = clean_data(products, processed_categories[0])
 
-    #insert the products in database
-    for data_dict in cleaned_products:
-        try:
-            c = Categorys(category=data_dict["category"])
+    try:#insert the products in database
+        for data_dict in cleaned_products:
+            c = Categorys(category=processed_categories[0])
             c.save()
 
             if data_dict["nutrition_grade_fr"] == "a":
@@ -70,5 +69,13 @@ def insert_products_if_not_in_found_in_data_base(product):
             cat = Categorys.objects.get(category=data_dict["category"])
             p.category = cat
             p.save()
-        except:
-            pass
+            print("Produit " + p.product_name_fr + " manquant inséré dans la base de données!")
+    except:
+        print("Erreur dans l'insertion des nouveaux produits!")
+
+    product = Products.objects.filter(product_name_fr=cleaned_products[0]["product_name_fr"])
+
+    return product[0].product_name_fr
+    
+
+    
