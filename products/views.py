@@ -79,6 +79,7 @@ def products_list(request, product):
         )  # select 6 products randomly
     else:
         random_six_products = query_set_product
+        
 
 
     if "submit" in request.POST:  # do something with interview_HTML button is clicked
