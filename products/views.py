@@ -78,21 +78,14 @@ def products_list(request, product):
             list(query_set_product), 6
         )  # select 6 products randomly
     
-    if len(query_set_product) <= 6:
+    else:
         query_set_product = Products.objects.filter(
             Q(nutrition_grade_fr__lte=nut) 
         ).exclude(product=product_found.product)
 
         random_six_products = random.sample(
             list(query_set_product), 6
-        )  # select 6 products randomly
-    
-    else:    
-        context = {
-                    "attention": "Produits nde substitution non trouvés, essayer de chercher un autre produit svp!!"
-                }
-        return render(request, "products/index.html", context)
-        
+        )  # select 6 products randomly   
 
 
     if "submit" in request.POST:  # do something with interview_HTML button is clicked

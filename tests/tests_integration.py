@@ -86,7 +86,6 @@ class TestIntegrations(StaticLiveServerTestCase):
         self.driver.find_element_by_id("searchForm").submit()
 
         
-
         self.assertTrue(self.driver.title == 'Page Products')
 
 
