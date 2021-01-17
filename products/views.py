@@ -68,7 +68,7 @@ def products_list(request, product):
     query_set_product = (
         Products.objects.filter(category=product_found.category)
         .filter(
-            Q(nutrition_grade_fr__lte=nut)
+            Q(nutrition_grade_fr__lte=nut) 
         )  # propose products with value less or equal at the search product
         .exclude(product=product_found.product)
     )
@@ -77,8 +77,21 @@ def products_list(request, product):
         random_six_products = random.sample(
             list(query_set_product), 6
         )  # select 6 products randomly
-    else:
-        random_six_products = query_set_product
+    
+    if len(query_set_product) <= 6:
+        query_set_product = Products.objects.filter(
+            Q(nutrition_grade_fr__lte=nut) 
+        ).exclude(product=product_found.product)
+
+        random_six_products = random.sample(
+            list(query_set_product), 6
+        )  # select 6 products randomly
+    
+    else:    
+        context = {
+                    "attention": "Produits nde substitution non trouvés, essayer de chercher un autre produit svp!!"
+                }
+        return render(request, "products/index.html", context)
         
 
 
