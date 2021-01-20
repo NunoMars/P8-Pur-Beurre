@@ -10,6 +10,16 @@ from products.download_products import DataFiles
 
     
 class DownloadProducts(TestCase):
+    def test_clean_data(self):
+        with open("fixtures/data_new_fonctionality.json") as products_data:
+            products_data = json.load(products_data)
+
+        with open("fixtures/data_new_fonctionality_cleaned_data.json") as cleaned_products:
+            cleaned_products = json.load(cleaned_products)
+
+        assert clean_data(products_data, "Produits laitiers") == cleaned_products
+    
+
     def test_call_openfoodfacts(self):
         
         with open("fixtures/products_data1.json") as products_data:
