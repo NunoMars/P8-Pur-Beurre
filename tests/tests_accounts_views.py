@@ -15,3 +15,7 @@ class AccountsPagesTest(TestCase):
     def test_history_page(self):
         response = self.client.get(reverse('history'))
         self.assertEqual(response.status_code, 302)
+
+    def test_email_change_page(self):
+        response = self.client.get(reverse('email_change'))
+        self.assertEqual(response.status_code, 302)

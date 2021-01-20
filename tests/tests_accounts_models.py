@@ -15,5 +15,8 @@ class UserCreationTest(TestCase):
     def test_user(self):
         user = CustomUser.objects.get(email="email@email.com")
         self.assertEqual(user.email, "email@email.com")
+        self.assertEqual(user.first_name, "first_name")
+        self.assertEqual(user.second_name, "second_name")
+        self.assertEqual(user.password, "12345678")
 
 

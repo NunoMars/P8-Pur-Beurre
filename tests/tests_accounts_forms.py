@@ -1,5 +1,6 @@
 from django.test import TestCase
-from accounts.forms import CustomUserCreationForm
+from accounts.forms import CustomUserCreationForm, EmailChangeForm
+from accounts.models import CustomUser
 
 
 class CustomUserCreationFormTest(TestCase):
@@ -40,3 +41,34 @@ class CustomUserCreationFormTest(TestCase):
 
         form = CustomUserCreationForm(data=form_data)
         self.assertTrue(form.is_valid())
+
+class EmailChangeFormTest(TestCase):
+
+    def setUp(self):
+        user = CustomUser.objects.create(
+            email='remi@purbeurre.com',
+            first_name='Remi',
+            second_name='PetitChef',
+            password='Some.hi1'
+        )
+        self.user = CustomUser.objects.get(email='remi@purbeurre.com')
+        self.form = EmailChangeForm(self.user)
+
+    def test_email_change_form_email1_field_label(self):
+        
+        self.assertTrue(
+            self.form.fields['new_email1'].label == None or self.form.fields['new_email1'].label == 'New email address')
+    
+    def test_email_change_form_email2_field_label(self):
+
+        self.assertTrue(
+            self.form.fields['new_email2'].label == None or self.form.fields['new_email2'].label == 'New email address confirmation')
+
+    def test_email_change_form(self):
+        form_data = {
+            'new_email1': 'remi1@purbeurre.com',
+            'new_email2': 'remi1@purbeurre.com'
+            }
+
+        self.form = EmailChangeForm(self.user, data=form_data)
+        self.assertTrue(self.form.is_valid())

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout, login, authenticate
 from .backend import CustomUserAuth as CuA
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, EmailChangeForm
+from django.contrib.auth.decorators import login_required
 from .models import CustomUser
 
 
@@ -70,6 +71,25 @@ def login_view(request):
         pass
 
     return render(request, "accounts/login.html", {"form": form})
+
+####### email change #######
+
+@login_required() 
+def email_change(request):
+    user = request.user
+    user = CustomUser.objects.get(email=user)
+    form = EmailChangeForm(user)
+    if request.method=='POST':
+        form = EmailChangeForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            print(user.email)
+            return redirect("history")            
+    else:
+        form =EmailChangeForm(user)
+    
+    return render(request, "accounts/email_change.html", {'form':form})
+
 
 
 def logout_view(request):
